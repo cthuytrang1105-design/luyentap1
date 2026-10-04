@@ -17,14 +17,14 @@ body {
 body {
     font-family: Arial, Helvetica, sans-serif;
 
+    color: #263746;
+
     background:
         linear-gradient(
             180deg,
-            #fdf8ff 0%,
-            #f6efff 100%
+            #eefaff 0%,
+            #f7fcff 100%
         );
-
-    color: #453b4f;
 }
 
 
@@ -35,7 +35,6 @@ body {
 .app {
     width: 100%;
     min-height: 100vh;
-
     padding: 16px;
 }
 
@@ -45,16 +44,12 @@ body {
 ========================================= */
 
 .question-header {
-
     width: 100%;
-
     min-height: 80px;
 
     background: #ffffff;
 
-    border:
-        3px solid
-        #ead8f3;
+    border: 3px solid #c9eaf2;
 
     border-radius: 22px;
 
@@ -67,23 +62,20 @@ body {
 
     align-items: center;
 
-    padding:
-        12px
-        16px;
+    padding: 12px 16px;
 
     box-shadow:
-        0 4px 15px
-        rgba(124, 85, 160, 0.08);
+        0 5px 18px
+        rgba(34, 115, 145, 0.12);
 }
 
 
-.question-number {
+/* CÂU HỎI 1 */
 
+.question-number {
     justify-self: start;
 
-    padding:
-        15px
-        19px;
+    padding: 15px 19px;
 
     border-radius: 15px;
 
@@ -91,24 +83,24 @@ body {
 
     font-weight: 900;
 
-    color: #734f82;
+    color: #664700;
 
     background:
         linear-gradient(
             135deg,
-            #e9c7ff,
-            #f7c6dc
+            #ffb300,
+            #ffd65a
         );
 
     box-shadow:
-        inset
-        0 -3px 0
-        rgba(125, 74, 148, 0.08);
+        0 4px 0
+        #e49b00;
 }
 
 
-.question-header h1 {
+/* TIÊU ĐỀ */
 
+.question-header h1 {
     text-align: center;
 
     font-size:
@@ -118,22 +110,21 @@ body {
             31px
         );
 
-    color: #5b455d;
+    color: #51433f;
 
     font-weight: 900;
 
     line-height: 1.3;
 }
 
-
 .question-header h1 span {
-
-    color: #b367b3;
+    color: #2382d0;
 }
 
 
-.header-actions {
+/* NÚT HEADER */
 
+.header-actions {
     justify-self: end;
 
     display: flex;
@@ -141,15 +132,12 @@ body {
     gap: 10px;
 }
 
-
 .header-actions button {
-
     border: none;
 
     height: 48px;
 
-    padding:
-        0 18px;
+    padding: 0 18px;
 
     border-radius: 13px;
 
@@ -162,47 +150,41 @@ body {
     cursor: pointer;
 
     transition: 0.2s;
-}
 
+    box-shadow:
+        0 4px 0
+        rgba(0, 0, 0, 0.12);
+}
 
 .fullscreen-btn {
-
     background:
         linear-gradient(
             135deg,
-            #9471d5,
-            #aa7fdc
+            #147bd1,
+            #399ce9
         );
 }
-
 
 .reset-btn {
-
     background:
         linear-gradient(
             135deg,
-            #df83ad,
-            #ec8cb4
+            #e84e4e,
+            #f16f67
         );
 }
 
-
 .header-actions button:hover {
-
-    transform:
-        translateY(-2px);
-
-    filter:
-        brightness(1.04);
+    transform: translateY(-2px);
+    filter: brightness(1.06);
 }
 
 
 /* =========================================
-   LAYOUT CHÍNH
+   LAYOUT
 ========================================= */
 
 .game-layout {
-
     margin-top: 12px;
 
     display: grid;
@@ -228,20 +210,17 @@ body {
 
 .program-panel,
 .cards-panel {
-
     background: #ffffff;
 
     border-radius: 22px;
 
     overflow: hidden;
 
-    border:
-        2px solid
-        #eadcf2;
+    border: 2px solid #cde8ef;
 
     box-shadow:
-        0 7px 20px
-        rgba(105, 73, 128, 0.1);
+        0 8px 22px
+        rgba(38, 120, 146, 0.12);
 
     display: flex;
 
@@ -254,11 +233,9 @@ body {
 ========================================= */
 
 .panel-header {
-
     min-height: 51px;
 
-    padding:
-        0 18px;
+    padding: 0 18px;
 
     display: flex;
 
@@ -266,29 +243,23 @@ body {
 
     justify-content: space-between;
 
+    color: #ffffff;
+
     background:
         linear-gradient(
             135deg,
-            #9b71bc,
-            #c27eb2
+            #208ca1,
+            #2c7889
         );
-
-    color: #ffffff;
 }
 
-
 .panel-header h2 {
-
     font-size: 22px;
-
     font-weight: 900;
 }
 
-
 .panel-header p {
-
     font-size: 13px;
-
     font-weight: 700;
 }
 
@@ -298,10 +269,7 @@ body {
 ========================================= */
 
 .slots-area {
-
-    padding:
-        10px
-        12px;
+    padding: 10px 12px;
 
     display: flex;
 
@@ -316,11 +284,10 @@ body {
 
 
 /* =========================================
-   1 KHAY
+   KHAY
 ========================================= */
 
 .code-slot {
-
     min-height: 64px;
 
     display: grid;
@@ -334,36 +301,35 @@ body {
 
     border:
         3px dashed
-        #d9bde8;
+        #b8dbe5;
 
     border-radius: 18px;
 
-    background: #fcf9ff;
+    background: #f5fbfd;
 
     overflow: hidden;
 
     transition: 0.18s;
 }
 
-
 .code-slot.active-slot {
+    border-color: #258ce1;
 
-    border-color: #af82db;
-
-    background: #f8f1ff;
+    background: #eef8ff;
 }
-
 
 .code-slot.drag-over {
+    border-color: #00a5c7;
 
-    border-color: #b675c6;
+    background: #e7fbff;
 
-    background: #f6e9ff;
+    transform: scale(1.005);
 }
 
 
-.slot-number {
+/* SỐ KHAY */
 
+.slot-number {
     display: flex;
 
     align-items: center;
@@ -374,17 +340,16 @@ body {
 
     font-weight: 900;
 
-    color: #735981;
+    color: #3f6572;
 
-    background: #efe2f7;
+    background: #dceff4;
 }
 
 
-.slot-content {
+/* NỘI DUNG KHAY */
 
-    padding:
-        8px
-        12px;
+.slot-content {
+    padding: 8px 12px;
 
     display: flex;
 
@@ -397,10 +362,8 @@ body {
     min-width: 0;
 }
 
-
 .slot-placeholder {
-
-    color: #b5a0bd;
+    color: #91acb5;
 
     font-size: 15px;
 
@@ -408,11 +371,12 @@ body {
 }
 
 
-.slot-controls {
+/* =========================================
+   NÚT BÊN PHẢI KHAY
+========================================= */
 
-    padding:
-        5px
-        7px;
+.slot-controls {
+    padding: 5px 7px;
 
     display: flex;
 
@@ -423,9 +387,7 @@ body {
     gap: 4px;
 }
 
-
 .control-row {
-
     display: grid;
 
     grid-template-columns:
@@ -435,20 +397,18 @@ body {
     gap: 5px;
 }
 
-
 .control-row button {
-
     height: 26px;
 
     border:
         1px solid
-        #dfd1e6;
+        #c7dce3;
 
     border-radius: 8px;
 
     background: #ffffff;
 
-    color: #6f5977;
+    color: #456571;
 
     cursor: pointer;
 
@@ -460,45 +420,42 @@ body {
 
     box-shadow:
         0 2px 5px
-        rgba(90, 64, 105, 0.08);
-}
+        rgba(50, 100, 120, 0.1);
 
+    transition: 0.15s;
+}
 
 .control-row button:hover {
+    background: #eaf7fb;
 
-    background: #f6ebfb;
+    border-color: #60b1ca;
 }
 
-
 .delete-line {
-
-    color: #dd739d !important;
+    color: #e74b55 !important;
 }
 
 
 /* =========================================
-   THẺ ĐƯỢC THẢ VÀO KHAY
+   THẺ TRONG KHAY
 ========================================= */
 
 .placed-card {
-
     border:
         1px solid
-        #c49ed8;
+        #88bfcf;
 
-    padding:
-        8px
-        11px;
+    padding: 8px 11px;
 
     border-radius: 9px;
 
-    color: #684c76;
+    color: #224b5a;
 
     background:
         linear-gradient(
             135deg,
-            #e8d7fa,
-            #f7d7e7
+            #d7f0f5,
+            #e8f8fc
         );
 
     font-family:
@@ -515,12 +472,14 @@ body {
 
     box-shadow:
         0 3px 0
-        #c6a6d4;
+        #9bc5d0;
 }
 
+.placed-card:hover {
+    filter: brightness(1.03);
+}
 
 .placed-card:active {
-
     cursor: grabbing;
 }
 
@@ -530,7 +489,6 @@ body {
 ========================================= */
 
 .bottom-actions {
-
     display: grid;
 
     grid-template-columns:
@@ -548,9 +506,7 @@ body {
     margin-top: auto;
 }
 
-
 .bottom-actions button {
-
     height: 47px;
 
     border: none;
@@ -566,45 +522,49 @@ body {
     cursor: pointer;
 
     transition: 0.2s;
-}
 
+    box-shadow:
+        0 4px 0
+        rgba(0, 0, 0, 0.12);
+}
 
 .bottom-actions button:hover {
-
-    transform:
-        translateY(-2px);
+    transform: translateY(-2px);
 }
 
+
+/* THÊM KHAY */
 
 .add-slot-btn {
-
     background:
         linear-gradient(
             135deg,
-            #9873bd,
-            #ae83cb
+            #357c8c,
+            #4b98a8
         );
 }
 
+
+/* XÓA */
 
 .clear-all-btn {
-
     background:
         linear-gradient(
             135deg,
-            #d382b2,
-            #e190bc
+            #e88422,
+            #f29a3c
         );
 }
 
 
-.check-btn {
+/* KIỂM TRA */
 
+.check-btn {
     background:
         linear-gradient(
             135deg,
-            #b66cc0,
-            #d477b3
+            #0e9c59,
+            #28b56f
         );
 }
 
@@ -614,22 +574,15 @@ body {
 ========================================= */
 
 .cards-panel {
-
     position: relative;
 }
 
-
 .cards-header {
-
     flex-shrink: 0;
 }
 
-
 .cards-body {
-
-    padding:
-        8px
-        9px;
+    padding: 8px 9px;
 
     display: flex;
 
@@ -648,23 +601,18 @@ body {
 ========================================= */
 
 .card-box {
-
     border:
         1px solid
-        #e5d8eb;
+        #d5e4e9;
 
     border-radius: 14px;
 
-    padding:
-        7px
-        9px;
+    padding: 7px 9px;
 
-    background: #fefcff;
+    background: #fbfdfe;
 }
 
-
 .card-box h3 {
-
     display: flex;
 
     align-items: center;
@@ -673,16 +621,14 @@ body {
 
     margin-bottom: 7px;
 
-    color: #4e4655;
+    color: #36454d;
 
     font-size: 14px;
 
     font-weight: 900;
 }
 
-
 .dot {
-
     width: 14px;
     height: 14px;
 
@@ -692,38 +638,29 @@ body {
 }
 
 
+/* MÀU NHÓM */
+
 .variable-dot {
-
-    background: #b98bdb;
+    background: #45c79d;
 }
-
 
 .number-dot {
-
-    background: #eda3c8;
+    background: #ffc048;
 }
-
 
 .command-dot {
-
-    background: #9e7ae6;
+    background: #7964dd;
 }
-
 
 .operator-dot {
-
-    background: #e984a6;
+    background: #ff6f73;
 }
-
 
 .symbol-dot {
-
-    background: #b198e6;
+    background: #44aee6;
 }
 
-
 .cards-row {
-
     display: flex;
 
     flex-wrap: wrap;
@@ -737,14 +674,11 @@ body {
 ========================================= */
 
 .code-card {
-
     min-width: 43px;
 
     height: 37px;
 
-    padding:
-        0
-        11px;
+    padding: 0 11px;
 
     border-radius: 10px;
 
@@ -760,82 +694,124 @@ body {
 
     cursor: grab;
 
-    box-shadow:
-        0 4px 0
-        rgba(90, 58, 105, 0.17);
-
     transition:
         transform 0.12s,
         filter 0.12s;
-}
 
+    box-shadow:
+        0 4px 0
+        rgba(0, 0, 0, 0.16);
+}
 
 .code-card:hover {
-
-    transform:
-        translateY(-2px);
-
-    filter:
-        brightness(1.035);
+    transform: translateY(-2px);
+    filter: brightness(1.05);
 }
-
 
 .code-card:active {
-
     cursor: grabbing;
 
-    transform:
-        translateY(1px);
+    transform: translateY(1px);
 }
 
 
-/* BIẾN */
+/* =========================================
+   THẺ BIẾN - XANH LÁ
+========================================= */
 
 .variable {
+    background:
+        linear-gradient(
+            135deg,
+            #52cfa3,
+            #69d9b3
+        );
 
-    background: #cda8e6;
+    color: #174d3c;
 
-    color: #563e68;
+    box-shadow:
+        0 4px 0
+        #37a781;
 }
 
 
-/* SỐ */
+/* =========================================
+   THẺ SỐ - VÀNG
+========================================= */
 
 .number {
+    background:
+        linear-gradient(
+            135deg,
+            #ffc74c,
+            #ffd86a
+        );
 
-    background: #f3bed7;
+    color: #614606;
 
-    color: #694254;
+    box-shadow:
+        0 4px 0
+        #dda62c;
 }
 
 
-/* LỆNH */
+/* =========================================
+   THẺ LỆNH - TÍM
+========================================= */
 
 .command {
-
-    background: #9f83e8;
+    background:
+        linear-gradient(
+            135deg,
+            #7460df,
+            #8f7bed
+        );
 
     color: #ffffff;
+
+    box-shadow:
+        0 4px 0
+        #5c4ac0;
 }
 
 
-/* TOÁN TỬ */
+/* =========================================
+   TOÁN TỬ - ĐỎ HỒNG
+========================================= */
 
 .operator {
+    background:
+        linear-gradient(
+            135deg,
+            #ff7479,
+            #ff8d90
+        );
 
-    background: #ed95b3;
+    color: #5e2528;
 
-    color: #6d394c;
+    box-shadow:
+        0 4px 0
+        #d8585d;
 }
 
 
-/* KÝ HIỆU */
+/* =========================================
+   KÝ HIỆU - XANH DƯƠNG
+========================================= */
 
 .symbol {
+    background:
+        linear-gradient(
+            135deg,
+            #52afe3,
+            #6cc2ee
+        );
 
-    background: #bda9ec;
+    color: #174c69;
 
-    color: #503e6c;
+    box-shadow:
+        0 4px 0
+        #3695c7;
 }
 
 
@@ -844,17 +820,15 @@ body {
 ========================================= */
 
 .custom-box {
-
     min-height: 48px;
 }
 
 
 /* =========================================
-   FOOTER TỰ TẠO
+   FOOTER TẠO THẺ
 ========================================= */
 
 .custom-card-footer {
-
     flex-shrink: 0;
 
     padding:
@@ -862,28 +836,24 @@ body {
         9px
         10px;
 
-    background: #faf4fd;
+    background: #eef9fc;
 
     border-top:
         2px solid
-        #ead9f2;
+        #cce8ef;
 }
 
-
 .custom-card-footer h3 {
-
     margin-bottom: 7px;
 
-    color: #765987;
+    color: #39717d;
 
     font-size: 14px;
 
     font-weight: 900;
 }
 
-
 .custom-input-row {
-
     display: grid;
 
     grid-template-columns:
@@ -894,40 +864,37 @@ body {
     gap: 6px;
 }
 
-
 .custom-input-row input,
 .custom-input-row select {
-
     height: 39px;
 
     border:
         2px solid
-        #dfcfe8;
+        #c5dce3;
 
     border-radius: 9px;
 
     background: #ffffff;
 
-    padding:
-        0 10px;
+    padding: 0 10px;
 
     outline: none;
 
-    color: #56465e;
+    color: #40515a;
 
     font-size: 14px;
 }
 
-
 .custom-input-row input:focus,
 .custom-input-row select:focus {
+    border-color: #40a6c4;
 
-    border-color: #b68bd2;
+    box-shadow:
+        0 0 0 3px
+        rgba(64, 166, 196, 0.12);
 }
 
-
 #addCustomBtn {
-
     height: 39px;
 
     border: none;
@@ -937,8 +904,8 @@ body {
     background:
         linear-gradient(
             135deg,
-            #aa7ad1,
-            #d27eb7
+            #2087d0,
+            #3ba4eb
         );
 
     color: #ffffff;
@@ -948,6 +915,10 @@ body {
     font-weight: 900;
 
     cursor: pointer;
+
+    box-shadow:
+        0 4px 0
+        #166aa7;
 }
 
 
@@ -956,11 +927,9 @@ body {
 ========================================= */
 
 .toast {
-
     position: fixed;
 
     left: 50%;
-
     bottom: 25px;
 
     transform:
@@ -968,16 +937,18 @@ body {
         translateY(30px);
 
     min-width: 280px;
-
     max-width: 90%;
 
-    padding:
-        13px
-        20px;
+    padding: 13px 20px;
 
     border-radius: 12px;
 
-    background: #654b73;
+    background:
+        linear-gradient(
+            135deg,
+            #255f72,
+            #37899e
+        );
 
     color: #ffffff;
 
@@ -986,7 +957,6 @@ body {
     text-align: center;
 
     opacity: 0;
-
     visibility: hidden;
 
     transition: 0.25s;
@@ -995,14 +965,11 @@ body {
 
     box-shadow:
         0 8px 25px
-        rgba(54, 34, 64, 0.25);
+        rgba(23, 77, 94, 0.25);
 }
 
-
 .toast.show {
-
     opacity: 1;
-
     visibility: visible;
 
     transform:
@@ -1016,7 +983,6 @@ body {
 ========================================= */
 
 .success-overlay {
-
     position: fixed;
 
     inset: 0;
@@ -1030,7 +996,7 @@ body {
     justify-content: center;
 
     background:
-        rgba(75, 50, 84, 0.42);
+        rgba(21, 70, 80, 0.48);
 
     backdrop-filter: blur(5px);
 
@@ -1041,25 +1007,19 @@ body {
     transition: 0.25s;
 }
 
-
 .success-overlay.show {
-
     opacity: 1;
-
     visibility: visible;
 }
 
-
 .success-box {
-
     width:
         min(
             430px,
             calc(100% - 30px)
         );
 
-    padding:
-        28px;
+    padding: 28px;
 
     border-radius: 24px;
 
@@ -1069,43 +1029,35 @@ body {
 
     border:
         3px solid
-        #ebd6f1;
+        #bfe5d3;
 
     box-shadow:
         0 20px 60px
-        rgba(86, 52, 99, 0.25);
+        rgba(20, 80, 65, 0.28);
 }
 
-
 .success-icon {
-
     font-size: 65px;
 }
 
-
 .success-box h2 {
-
     margin-top: 7px;
 
     font-size: 29px;
 
-    color: #9b65ad;
+    color: #129454;
 }
 
-
 .success-box p {
-
     margin:
         8px
         0
         20px;
 
-    color: #77677d;
+    color: #60727a;
 }
 
-
 .success-box button {
-
     width: 100%;
 
     height: 45px;
@@ -1117,8 +1069,8 @@ body {
     background:
         linear-gradient(
             135deg,
-            #a573ca,
-            #d77fb7
+            #149c5b,
+            #28bc73
         );
 
     color: white;
@@ -1128,6 +1080,32 @@ body {
     font-weight: 900;
 
     cursor: pointer;
+
+    box-shadow:
+        0 4px 0
+        #0b7e46;
+}
+
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+.slots-area::-webkit-scrollbar,
+.cards-body::-webkit-scrollbar {
+    width: 7px;
+}
+
+.slots-area::-webkit-scrollbar-track,
+.cards-body::-webkit-scrollbar-track {
+    background: #eff7fa;
+}
+
+.slots-area::-webkit-scrollbar-thumb,
+.cards-body::-webkit-scrollbar-thumb {
+    background: #8bc5d4;
+
+    border-radius: 10px;
 }
 
 
@@ -1138,7 +1116,6 @@ body {
 @media (max-width: 1100px) {
 
     .question-header {
-
         grid-template-columns:
             170px
             1fr;
@@ -1146,48 +1123,35 @@ body {
         gap: 10px;
     }
 
-
     .header-actions {
-
         grid-column:
             1 / -1;
 
         justify-self: center;
     }
 
-
     .game-layout {
-
         grid-template-columns: 1fr;
-
         height: auto;
     }
 
-
     .program-panel {
-
         min-height: 720px;
     }
 
-
     .cards-panel {
-
         min-height: 650px;
     }
-
 }
 
 
 @media (max-width: 650px) {
 
     .app {
-
         padding: 7px;
     }
 
-
     .question-header {
-
         display: flex;
 
         flex-direction: column;
@@ -1195,99 +1159,68 @@ body {
         gap: 10px;
     }
 
-
     .question-number {
-
         align-self: flex-start;
     }
 
-
     .question-header h1 {
-
         font-size: 22px;
     }
 
-
     .header-actions {
-
         width: 100%;
     }
 
-
     .header-actions button {
-
         flex: 1;
     }
 
-
     .game-layout {
-
         gap: 9px;
     }
 
-
     .panel-header h2 {
-
         font-size: 17px;
     }
 
-
     .panel-header p {
-
         display: none;
     }
 
-
     .code-slot {
-
         grid-template-columns:
             38px
             1fr
             82px;
     }
 
-
     .slot-controls {
-
-        padding:
-            4px;
+        padding: 4px;
     }
 
-
     .control-row button {
-
         font-size: 14px;
     }
 
-
     .bottom-actions {
-
         grid-template-columns: 1fr;
     }
 
-
     .custom-input-row {
-
         grid-template-columns:
             1fr
             45px;
     }
 
-
     .custom-input-row select {
-
         grid-column:
             1 / -1;
 
         grid-row: 2;
     }
 
-
     #addCustomBtn {
-
         grid-column: 2;
-
         grid-row: 1;
     }
-
 }
