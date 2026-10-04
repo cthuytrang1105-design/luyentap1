@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyện tập - Câu hỏi 1</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- =========================
+             THANH CÂU HỎI
+        ========================== -->
+        <header class="question-header">
+
+            <div class="question-number">
+                CÂU HỎI 1
+            </div>
+
+            <h1>
+                Tính tổng các số tự nhiên chẵn nhỏ hơn
+                <span>n</span> với <span>n = 10</span>
+            </h1>
+
+            <div class="header-actions">
+
+                <button id="fullscreenBtn" class="fullscreen-btn">
+                    ⛶ Toàn màn hình
+                </button>
+
+                <button id="resetBtn" class="reset-btn">
+                    ↻ Làm lại
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             KHU VỰC CHÍNH
+        ========================== -->
+        <main class="game-layout">
+
+
+            <!-- =========================
+                 BÊN TRÁI
+            ========================== -->
+            <section class="program-panel">
+
+                <div class="panel-header">
+
+                    <h2>
+                        🧩 LẮP GHÉP CHƯƠNG TRÌNH
+                    </h2>
+
+                    <p>
+                        Kéo để đổi vị trí • Bấm thẻ trong khay để xóa
+                    </p>
+
+                </div>
+
+
+                <!-- CÁC KHAY -->
+                <div class="slots-area" id="slotsArea">
+
+                    <!-- KHAY 1 -->
+                    <div class="code-slot" data-index="0">
+
+                        <div class="slot-number">1</div>
+
+                        <div class="slot-content">
+                            <span class="slot-placeholder">
+                                Thả thẻ vào đây...
+                            </span>
+                        </div>
+
+                        <div class="slot-controls">
+
+                            <div class="control-row">
+
+                                <button class="move-left">
+                                    ←
+                                </button>
+
+                                <button class="move-right">
+                                    →
+                                </button>
+
+                            </div>
+
+                            <div class="control-row">
+
+                                <button class="clear-line">
+                                    ⌫
+                                </button>
+
+                                <button class="delete-line">
+                                    ×
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- KHAY 2 -->
+                    <div class="code-slot active-slot" data-index="1">
+
+                        <div class="slot-number">2</div>
+
+                        <div class="slot-content">
+                            <span class="slot-placeholder">
+                                Thả thẻ vào đây...
+                            </span>
+                        </div>
+
+                        <div class="slot-controls">
+
+                            <div class="control-row">
+
+                                <button class="move-left">
+                                    ←
+                                </button>
+
+                                <button class="move-right">
+                                    →
+                                </button>
+
+                            </div>
+
+                            <div class="control-row">
+
+                                <button class="clear-line">
+                                    ⌫
+                                </button>
+
+                                <button class="delete-line">
+                                    ×
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- KHAY 3 -->
+                    <div class="code-slot" data-index="2">
+
+                        <div class="slot-number">3</div>
+
+                        <div class="slot-content">
+                            <span class="slot-placeholder">
+                                Thả thẻ vào đây...
+                            </span>
+                        </div>
+
+                        <div class="slot-controls">
+
+                            <div class="control-row">
+
+                                <button class="move-left">
+                                    ←
+                                </button>
+
+                                <button class="move-right">
+                                    →
+                                </button>
+
+                            </div>
+
+                            <div class="control-row">
+
+                                <button class="clear-line">
+                                    ⌫
+                                </button>
+
+                                <button class="delete-line">
+                                    ×
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- KHAY 4 -->
+                    <div class="code-slot" data-index="3">
+
+                        <div class="slot-number">4</div>
+
+                        <div class="slot-content">
+                            <span class="slot-placeholder">
+                                Thả thẻ vào đây...
+                            </span>
+                        </div>
+
+                        <div class="slot-controls">
+
+                            <div class="control-row">
+
+                                <button class="move-left">
+                                    ←
+                                </button>
+
+                                <button class="move-right">
+                                    →
+                                </button>
+
+                            </div>
+
+                            <div class="control-row">
+
+                                <button class="clear-line">
+                                    ⌫
+                                </button>
+
+                                <button class="delete-line">
+                                    ×
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- KHAY 5 -->
+                    <div class="code-slot" data-index="4">
+
+                        <div class="slot-number">5</div>
+
+                        <div class="slot-content">
+                            <span class="slot-placeholder">
+                                Thả thẻ vào đây...
+                            </span>
+                        </div>
+
+                        <div class="slot-controls">
+
+                            <div class="control-row">
+
+                                <button class="move-left">
+                                    ←
+                                </button>
+
+                                <button class="move-right">
+                                    →
+                                </button>
+
+                            </div>
+
+                            <div class="control-row">
+
+                                <button class="clear-line">
+                                    ⌫
+                                </button>
+
+                                <button class="delete-line">
+                                    ×
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- KHAY 6 -->
+                    <div class="code-slot" data-index="5">
+
+                        <div class="slot-number">6</div>
+
+                        <div class="slot-content">
+                            <span class="slot-placeholder">
+                                Thả thẻ vào đây...
+                            </span>
+                        </div>
+
+                        <div class="slot-controls">
+
+                            <div class="control-row">
+
+                                <button class="move-left">
+                                    ←
+                                </button>
+
+                                <button class="move-right">
+                                    →
+                                </button>
+
+                            </div>
+
+                            <div class="control-row">
+
+                                <button class="clear-line">
+                                    ⌫
+                                </button>
+
+                                <button class="delete-line">
+                                    ×
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- NÚT DƯỚI -->
+                <div class="bottom-actions">
+
+                    <button id="addSlotBtn" class="add-slot-btn">
+                        ＋ Thêm khay
+                    </button>
+
+                    <button id="clearAllBtn" class="clear-all-btn">
+                        🧹 Xóa thẻ
+                    </button>
+
+                    <button id="checkBtn" class="check-btn">
+                        ✓ KIỂM TRA
+                    </button>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================
+                 BÊN PHẢI - KHO THẺ
+            ========================== -->
+            <section class="cards-panel">
+
+                <div class="panel-header cards-header">
+
+                    <h2>
+                        🎴 KHO THẺ
+                    </h2>
+
+                    <p>
+                        Bấm hoặc kéo thẻ
+                    </p>
+
+                </div>
+
+
+                <div class="cards-body">
+
+
+                    <!-- BIẾN -->
+                    <div class="card-box">
+
+                        <h3>
+                            <span class="dot variable-dot"></span>
+                            THẺ BIẾN
+                        </h3>
+
+                        <div class="cards-row">
+
+                            <button class="code-card variable" data-value="n">
+                                n
+                            </button>
+
+                            <button class="code-card variable" data-value="S">
+                                S
+                            </button>
+
+                            <button class="code-card variable" data-value="k">
+                                k
+                            </button>
+
+                            <button class="code-card variable" data-value="C">
+                                C
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SỐ -->
+                    <div class="card-box">
+
+                        <h3>
+                            <span class="dot number-dot"></span>
+                            THẺ SỐ
+                        </h3>
+
+                        <div class="cards-row">
+
+                            <button class="code-card number" data-value="0">
+                                0
+                            </button>
+
+                            <button class="code-card number" data-value="1">
+                                1
+                            </button>
+
+                            <button class="code-card number" data-value="2">
+                                2
+                            </button>
+
+                            <button class="code-card number" data-value="3">
+                                3
+                            </button>
+
+                            <button class="code-card number" data-value="10">
+                                10
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- LỆNH -->
+                    <div class="card-box">
+
+                        <h3>
+                            <span class="dot command-dot"></span>
+                            THẺ LỆNH
+                        </h3>
+
+                        <div class="cards-row">
+
+                            <button class="code-card command" data-value="for">
+                                for
+                            </button>
+
+                            <button class="code-card command" data-value="in">
+                                in
+                            </button>
+
+                            <button class="code-card command" data-value="range">
+                                range
+                            </button>
+
+                            <button class="code-card command" data-value="if">
+                                if
+                            </button>
+
+                            <button class="code-card command" data-value="print">
+                                print
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TOÁN TỬ -->
+                    <div class="card-box">
+
+                        <h3>
+                            <span class="dot operator-dot"></span>
+                            PHÉP TÍNH / TOÁN TỬ
+                        </h3>
+
+                        <div class="cards-row">
+
+                            <button class="code-card operator" data-value="=">
+                                =
+                            </button>
+
+                            <button class="code-card operator" data-value="%">
+                                %
+                            </button>
+
+                            <button class="code-card operator" data-value="==">
+                                ==
+                            </button>
+
+                            <button class="code-card operator" data-value="+">
+                                +
+                            </button>
+
+                            <button class="code-card operator" data-value="-">
+                                −
+                            </button>
+
+                            <button class="code-card operator" data-value="<">
+                                &lt;
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- KÝ HIỆU -->
+                    <div class="card-box">
+
+                        <h3>
+                            <span class="dot symbol-dot"></span>
+                            THẺ KÝ HIỆU
+                        </h3>
+
+                        <div class="cards-row">
+
+                            <button class="code-card symbol" data-value="(">
+                                (
+                            </button>
+
+                            <button class="code-card symbol" data-value=")">
+                                )
+                            </button>
+
+                            <button class="code-card symbol" data-value=":">
+                                :
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- THẺ TỰ TẠO -->
+                    <div class="card-box custom-box">
+
+                        <h3>
+                            ⭐ THẺ TỰ TẠO
+                        </h3>
+
+                        <div id="customCards" class="cards-row"></div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TỰ VIẾT THẺ -->
+                <div class="custom-card-footer">
+
+                    <h3>
+                        ✏️ TỰ VIẾT THÊM THẺ
+                    </h3>
+
+                    <div class="custom-input-row">
+
+                        <input
+                            id="customInput"
+                            type="text"
+                            placeholder="Nhập nội dung..."
+                        >
+
+                        <select id="customType">
+
+                            <option value="variable">
+                                Biến
+                            </option>
+
+                            <option value="number">
+                                Số
+                            </option>
+
+                            <option value="command">
+                                Lệnh
+                            </option>
+
+                            <option value="operator">
+                                Toán tử
+                            </option>
+
+                            <option value="symbol">
+                                Ký hiệu
+                            </option>
+
+                        </select>
+
+                        <button id="addCustomBtn">
+                            ＋
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================
+         THÔNG BÁO
+    ========================== -->
+    <div id="toast" class="toast"></div>
+
+
+    <!-- =========================
+         POPUP ĐÚNG
+    ========================== -->
+    <div id="successOverlay" class="success-overlay">
+
+        <div class="success-box">
+
+            <div class="success-icon">
+                🎉
+            </div>
+
+            <h2>
+                Chính xác!
+            </h2>
+
+            <p>
+                Bạn đã lắp ghép chương trình đúng.
+            </p>
+
+            <button id="closeSuccessBtn">
+                Tiếp tục
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

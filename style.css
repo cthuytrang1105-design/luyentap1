@@ -1,0 +1,1293 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fdf8ff 0%,
+            #f6efff 100%
+        );
+
+    color: #453b4f;
+}
+
+
+/* =========================================
+   APP
+========================================= */
+
+.app {
+    width: 100%;
+    min-height: 100vh;
+
+    padding: 16px;
+}
+
+
+/* =========================================
+   THANH CÂU HỎI
+========================================= */
+
+.question-header {
+
+    width: 100%;
+
+    min-height: 80px;
+
+    background: #ffffff;
+
+    border:
+        3px solid
+        #ead8f3;
+
+    border-radius: 22px;
+
+    display: grid;
+
+    grid-template-columns:
+        210px
+        1fr
+        280px;
+
+    align-items: center;
+
+    padding:
+        12px
+        16px;
+
+    box-shadow:
+        0 4px 15px
+        rgba(124, 85, 160, 0.08);
+}
+
+
+.question-number {
+
+    justify-self: start;
+
+    padding:
+        15px
+        19px;
+
+    border-radius: 15px;
+
+    font-size: 21px;
+
+    font-weight: 900;
+
+    color: #734f82;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e9c7ff,
+            #f7c6dc
+        );
+
+    box-shadow:
+        inset
+        0 -3px 0
+        rgba(125, 74, 148, 0.08);
+}
+
+
+.question-header h1 {
+
+    text-align: center;
+
+    font-size:
+        clamp(
+            22px,
+            2vw,
+            31px
+        );
+
+    color: #5b455d;
+
+    font-weight: 900;
+
+    line-height: 1.3;
+}
+
+
+.question-header h1 span {
+
+    color: #b367b3;
+}
+
+
+.header-actions {
+
+    justify-self: end;
+
+    display: flex;
+
+    gap: 10px;
+}
+
+
+.header-actions button {
+
+    border: none;
+
+    height: 48px;
+
+    padding:
+        0 18px;
+
+    border-radius: 13px;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.fullscreen-btn {
+
+    background:
+        linear-gradient(
+            135deg,
+            #9471d5,
+            #aa7fdc
+        );
+}
+
+
+.reset-btn {
+
+    background:
+        linear-gradient(
+            135deg,
+            #df83ad,
+            #ec8cb4
+        );
+}
+
+
+.header-actions button:hover {
+
+    transform:
+        translateY(-2px);
+
+    filter:
+        brightness(1.04);
+}
+
+
+/* =========================================
+   LAYOUT CHÍNH
+========================================= */
+
+.game-layout {
+
+    margin-top: 12px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 2.18fr)
+        minmax(390px, 1fr);
+
+    gap: 18px;
+
+    align-items: stretch;
+
+    height:
+        calc(100vh - 125px);
+
+    min-height: 650px;
+}
+
+
+/* =========================================
+   PANEL
+========================================= */
+
+.program-panel,
+.cards-panel {
+
+    background: #ffffff;
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    border:
+        2px solid
+        #eadcf2;
+
+    box-shadow:
+        0 7px 20px
+        rgba(105, 73, 128, 0.1);
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+/* =========================================
+   HEADER PANEL
+========================================= */
+
+.panel-header {
+
+    min-height: 51px;
+
+    padding:
+        0 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background:
+        linear-gradient(
+            135deg,
+            #9b71bc,
+            #c27eb2
+        );
+
+    color: #ffffff;
+}
+
+
+.panel-header h2 {
+
+    font-size: 22px;
+
+    font-weight: 900;
+}
+
+
+.panel-header p {
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================
+   KHU KHAY
+========================================= */
+
+.slots-area {
+
+    padding:
+        10px
+        12px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    flex: 1;
+
+    overflow-y: auto;
+}
+
+
+/* =========================================
+   1 KHAY
+========================================= */
+
+.code-slot {
+
+    min-height: 64px;
+
+    display: grid;
+
+    grid-template-columns:
+        45px
+        1fr
+        104px;
+
+    align-items: stretch;
+
+    border:
+        3px dashed
+        #d9bde8;
+
+    border-radius: 18px;
+
+    background: #fcf9ff;
+
+    overflow: hidden;
+
+    transition: 0.18s;
+}
+
+
+.code-slot.active-slot {
+
+    border-color: #af82db;
+
+    background: #f8f1ff;
+}
+
+
+.code-slot.drag-over {
+
+    border-color: #b675c6;
+
+    background: #f6e9ff;
+}
+
+
+.slot-number {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 17px;
+
+    font-weight: 900;
+
+    color: #735981;
+
+    background: #efe2f7;
+}
+
+
+.slot-content {
+
+    padding:
+        8px
+        12px;
+
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    min-width: 0;
+}
+
+
+.slot-placeholder {
+
+    color: #b5a0bd;
+
+    font-size: 15px;
+
+    font-style: italic;
+}
+
+
+.slot-controls {
+
+    padding:
+        5px
+        7px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 4px;
+}
+
+
+.control-row {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap: 5px;
+}
+
+
+.control-row button {
+
+    height: 26px;
+
+    border:
+        1px solid
+        #dfd1e6;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #6f5977;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    line-height: 1;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 2px 5px
+        rgba(90, 64, 105, 0.08);
+}
+
+
+.control-row button:hover {
+
+    background: #f6ebfb;
+}
+
+
+.delete-line {
+
+    color: #dd739d !important;
+}
+
+
+/* =========================================
+   THẺ ĐƯỢC THẢ VÀO KHAY
+========================================= */
+
+.placed-card {
+
+    border:
+        1px solid
+        #c49ed8;
+
+    padding:
+        8px
+        11px;
+
+    border-radius: 9px;
+
+    color: #684c76;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e8d7fa,
+            #f7d7e7
+        );
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 15px;
+
+    font-weight: 900;
+
+    cursor: grab;
+
+    user-select: none;
+
+    box-shadow:
+        0 3px 0
+        #c6a6d4;
+}
+
+
+.placed-card:active {
+
+    cursor: grabbing;
+}
+
+
+/* =========================================
+   NÚT DƯỚI PANEL TRÁI
+========================================= */
+
+.bottom-actions {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr
+        1.15fr;
+
+    gap: 9px;
+
+    padding:
+        9px
+        12px
+        12px;
+
+    margin-top: auto;
+}
+
+
+.bottom-actions button {
+
+    height: 47px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.bottom-actions button:hover {
+
+    transform:
+        translateY(-2px);
+}
+
+
+.add-slot-btn {
+
+    background:
+        linear-gradient(
+            135deg,
+            #9873bd,
+            #ae83cb
+        );
+}
+
+
+.clear-all-btn {
+
+    background:
+        linear-gradient(
+            135deg,
+            #d382b2,
+            #e190bc
+        );
+}
+
+
+.check-btn {
+
+    background:
+        linear-gradient(
+            135deg,
+            #b66cc0,
+            #d477b3
+        );
+}
+
+
+/* =========================================
+   PANEL KHO THẺ
+========================================= */
+
+.cards-panel {
+
+    position: relative;
+}
+
+
+.cards-header {
+
+    flex-shrink: 0;
+}
+
+
+.cards-body {
+
+    padding:
+        8px
+        9px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    overflow-y: auto;
+
+    flex: 1;
+}
+
+
+/* =========================================
+   NHÓM THẺ
+========================================= */
+
+.card-box {
+
+    border:
+        1px solid
+        #e5d8eb;
+
+    border-radius: 14px;
+
+    padding:
+        7px
+        9px;
+
+    background: #fefcff;
+}
+
+
+.card-box h3 {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-bottom: 7px;
+
+    color: #4e4655;
+
+    font-size: 14px;
+
+    font-weight: 900;
+}
+
+
+.dot {
+
+    width: 14px;
+    height: 14px;
+
+    display: inline-block;
+
+    border-radius: 4px;
+}
+
+
+.variable-dot {
+
+    background: #b98bdb;
+}
+
+
+.number-dot {
+
+    background: #eda3c8;
+}
+
+
+.command-dot {
+
+    background: #9e7ae6;
+}
+
+
+.operator-dot {
+
+    background: #e984a6;
+}
+
+
+.symbol-dot {
+
+    background: #b198e6;
+}
+
+
+.cards-row {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+}
+
+
+/* =========================================
+   THẺ
+========================================= */
+
+.code-card {
+
+    min-width: 43px;
+
+    height: 37px;
+
+    padding:
+        0
+        11px;
+
+    border-radius: 10px;
+
+    border: none;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-weight: 900;
+
+    font-size: 14px;
+
+    cursor: grab;
+
+    box-shadow:
+        0 4px 0
+        rgba(90, 58, 105, 0.17);
+
+    transition:
+        transform 0.12s,
+        filter 0.12s;
+}
+
+
+.code-card:hover {
+
+    transform:
+        translateY(-2px);
+
+    filter:
+        brightness(1.035);
+}
+
+
+.code-card:active {
+
+    cursor: grabbing;
+
+    transform:
+        translateY(1px);
+}
+
+
+/* BIẾN */
+
+.variable {
+
+    background: #cda8e6;
+
+    color: #563e68;
+}
+
+
+/* SỐ */
+
+.number {
+
+    background: #f3bed7;
+
+    color: #694254;
+}
+
+
+/* LỆNH */
+
+.command {
+
+    background: #9f83e8;
+
+    color: #ffffff;
+}
+
+
+/* TOÁN TỬ */
+
+.operator {
+
+    background: #ed95b3;
+
+    color: #6d394c;
+}
+
+
+/* KÝ HIỆU */
+
+.symbol {
+
+    background: #bda9ec;
+
+    color: #503e6c;
+}
+
+
+/* =========================================
+   CUSTOM BOX
+========================================= */
+
+.custom-box {
+
+    min-height: 48px;
+}
+
+
+/* =========================================
+   FOOTER TỰ TẠO
+========================================= */
+
+.custom-card-footer {
+
+    flex-shrink: 0;
+
+    padding:
+        8px
+        9px
+        10px;
+
+    background: #faf4fd;
+
+    border-top:
+        2px solid
+        #ead9f2;
+}
+
+
+.custom-card-footer h3 {
+
+    margin-bottom: 7px;
+
+    color: #765987;
+
+    font-size: 14px;
+
+    font-weight: 900;
+}
+
+
+.custom-input-row {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        110px
+        45px;
+
+    gap: 6px;
+}
+
+
+.custom-input-row input,
+.custom-input-row select {
+
+    height: 39px;
+
+    border:
+        2px solid
+        #dfcfe8;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    padding:
+        0 10px;
+
+    outline: none;
+
+    color: #56465e;
+
+    font-size: 14px;
+}
+
+
+.custom-input-row input:focus,
+.custom-input-row select:focus {
+
+    border-color: #b68bd2;
+}
+
+
+#addCustomBtn {
+
+    height: 39px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #aa7ad1,
+            #d27eb7
+        );
+
+    color: #ffffff;
+
+    font-size: 25px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   TOAST
+========================================= */
+
+.toast {
+
+    position: fixed;
+
+    left: 50%;
+
+    bottom: 25px;
+
+    transform:
+        translateX(-50%)
+        translateY(30px);
+
+    min-width: 280px;
+
+    max-width: 90%;
+
+    padding:
+        13px
+        20px;
+
+    border-radius: 12px;
+
+    background: #654b73;
+
+    color: #ffffff;
+
+    font-weight: 800;
+
+    text-align: center;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: 0.25s;
+
+    z-index: 9999;
+
+    box-shadow:
+        0 8px 25px
+        rgba(54, 34, 64, 0.25);
+}
+
+
+.toast.show {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+/* =========================================
+   POPUP ĐÚNG
+========================================= */
+
+.success-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 10000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(75, 50, 84, 0.42);
+
+    backdrop-filter: blur(5px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: 0.25s;
+}
+
+
+.success-overlay.show {
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+.success-box {
+
+    width:
+        min(
+            430px,
+            calc(100% - 30px)
+        );
+
+    padding:
+        28px;
+
+    border-radius: 24px;
+
+    background: #ffffff;
+
+    text-align: center;
+
+    border:
+        3px solid
+        #ebd6f1;
+
+    box-shadow:
+        0 20px 60px
+        rgba(86, 52, 99, 0.25);
+}
+
+
+.success-icon {
+
+    font-size: 65px;
+}
+
+
+.success-box h2 {
+
+    margin-top: 7px;
+
+    font-size: 29px;
+
+    color: #9b65ad;
+}
+
+
+.success-box p {
+
+    margin:
+        8px
+        0
+        20px;
+
+    color: #77677d;
+}
+
+
+.success-box button {
+
+    width: 100%;
+
+    height: 45px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a573ca,
+            #d77fb7
+        );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .question-header {
+
+        grid-template-columns:
+            170px
+            1fr;
+
+        gap: 10px;
+    }
+
+
+    .header-actions {
+
+        grid-column:
+            1 / -1;
+
+        justify-self: center;
+    }
+
+
+    .game-layout {
+
+        grid-template-columns: 1fr;
+
+        height: auto;
+    }
+
+
+    .program-panel {
+
+        min-height: 720px;
+    }
+
+
+    .cards-panel {
+
+        min-height: 650px;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .app {
+
+        padding: 7px;
+    }
+
+
+    .question-header {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+
+    .question-number {
+
+        align-self: flex-start;
+    }
+
+
+    .question-header h1 {
+
+        font-size: 22px;
+    }
+
+
+    .header-actions {
+
+        width: 100%;
+    }
+
+
+    .header-actions button {
+
+        flex: 1;
+    }
+
+
+    .game-layout {
+
+        gap: 9px;
+    }
+
+
+    .panel-header h2 {
+
+        font-size: 17px;
+    }
+
+
+    .panel-header p {
+
+        display: none;
+    }
+
+
+    .code-slot {
+
+        grid-template-columns:
+            38px
+            1fr
+            82px;
+    }
+
+
+    .slot-controls {
+
+        padding:
+            4px;
+    }
+
+
+    .control-row button {
+
+        font-size: 14px;
+    }
+
+
+    .bottom-actions {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .custom-input-row {
+
+        grid-template-columns:
+            1fr
+            45px;
+    }
+
+
+    .custom-input-row select {
+
+        grid-column:
+            1 / -1;
+
+        grid-row: 2;
+    }
+
+
+    #addCustomBtn {
+
+        grid-column: 2;
+
+        grid-row: 1;
+    }
+
+}
