@@ -1,639 +1,4180 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luyện tập - Câu hỏi 1</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
+<title>Hoạt động 1 - Lập trình bằng thẻ</title>
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+
+    --main: #458b9c;
+    --main-dark: #336f7d;
+
+    --bg: #edf8fb;
+    --cream: #fff4df;
+
+    --text: #394850;
+
+    /* MÀU CÁC LOẠI THẺ */
+
+    --variable: #68d3a6;
+    --number: #ffd166;
+    --command: #8878ed;
+    --operator: #ff8989;
+    --symbol: #64b9ef;
+
+    --shadow:
+        0 8px 24px rgba(32, 71, 89, 0.15);
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+
+    overflow: hidden;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #ffffff 0%,
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            #f4fcff,
+            #dceff4
+        );
+}
+
+
+/* =========================================================
+   TOÀN BỘ APP
+========================================================= */
+
+.app {
+
+    width: 100vw;
+    height: 100vh;
+
+    padding: clamp(6px, 1vw, 14px);
+
+    display: grid;
+
+    grid-template-rows:
+        auto
+        1fr;
+
+    gap: clamp(6px, 1vh, 12px);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+
+    min-height: 78px;
+
+    background: white;
+
+    border:
+        3px solid
+        #cce6ed;
+
+    border-radius: 22px;
+
+    box-shadow:
+        var(--shadow);
+
+    display: grid;
+
+    grid-template-columns:
+        auto
+        1fr
+        auto;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding:
+        9px
+        15px;
+}
+
+
+/* CÂU HỎI 1 */
+
+.question-tag {
+
+    padding:
+        12px
+        17px;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffb400,
+            #ffd04b
+        );
+
+    color: #764716;
+
+    font-size:
+        clamp(
+            16px,
+            1.45vw,
+            24px
+        );
+
+    font-weight: 900;
+
+    white-space: nowrap;
+}
+
+
+/* NỘI DUNG ĐỀ */
+
+.question {
+
+    text-align: center;
+
+    min-width: 0;
+}
+
+.question h1 {
+
+    color: #734b3d;
+
+    font-size:
+        clamp(
+            20px,
+            1.9vw,
+            32px
+        );
+
+    line-height: 1.2;
+
+    font-weight: 900;
+}
+
+.question strong {
+
+    color: #347fce;
+}
+
+
+/* HEADER BUTTONS */
+
+.header-actions {
+
+    display: flex;
+
+    gap: 7px;
+}
+
+.header-btn {
+
+    min-height: 44px;
+
+    border: 0;
+
+    border-radius: 11px;
+
+    padding:
+        7px
+        13px;
+
+    color: white;
+
+    font-size:
+        clamp(
+            12px,
+            1vw,
+            16px
+        );
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: .15s;
+}
+
+.header-btn:hover {
+
+    transform:
+        translateY(-2px);
+}
+
+.fullscreen {
+
+    background: #337dce;
+}
+
+.reset {
+
+    background: #e45d5d;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main {
+
+    min-height: 0;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.6fr)
+        minmax(335px, .72fr);
+
+    gap:
+        clamp(
+            8px,
+            1vw,
+            15px
+        );
+}
+
+
+/* =========================================================
+   PANEL CHUNG
+========================================================= */
+
+.panel {
+
+    min-height: 0;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .96
+        );
+
+    border:
+        3px solid
+        #cfe7ed;
+
+    border-radius: 21px;
+
+    box-shadow:
+        var(--shadow);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   PANEL HEADER
+========================================================= */
+
+.panel-header {
+
+    min-height: 48px;
+
+    padding:
+        8px
+        14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--main),
+            var(--main-dark)
+        );
+
+    color: white;
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.panel-header h2 {
+
+    font-size:
+        clamp(
+            17px,
+            1.45vw,
+            24px
+        );
+}
+
+.tip {
+
+    opacity: .92;
+
+    font-size:
+        clamp(
+            10px,
+            .85vw,
+            14px
+        );
+
+    font-weight: 600;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   WORKSPACE
+========================================================= */
+
+.workspace {
+
+    display: grid;
+
+    grid-template-rows:
+        auto
+        1fr
+        auto;
+}
+
+
+/* =========================================================
+   KHU VỰC KHAY
+========================================================= */
+
+.trays {
+
+    min-height: 0;
+
+    padding:
+        9px
+        11px;
+
+    overflow-y: auto;
+
+    scrollbar-width: thin;
+}
+
+
+/* =========================================================
+   MỖI KHAY
+========================================================= */
+
+.tray {
+
+    min-height:
+        clamp(
+            55px,
+            6.3vh,
+            73px
+        );
+
+    margin-bottom: 7px;
+
+    border:
+        3px dashed
+        #b9d7df;
+
+    border-radius: 15px;
+
+    background: #f6fbfd;
+
+    display: grid;
+
+    grid-template-columns:
+        42px
+        minmax(0, 1fr)
+        106px;
+
+    overflow: hidden;
+
+    transition: .15s;
+}
+
+
+/* KHAY ĐANG CHỌN */
+
+.tray.selected {
+
+    border-color: #3485d4;
+
+    background: #eff8ff;
+
+    box-shadow:
+        inset 0 0 0 2px
+        rgba(
+            52,
+            133,
+            212,
+            .1
+        );
+}
+
+
+/* KHI KÉO THẺ VÀO */
+
+.tray.drag-over {
+
+    border-color: #f3ab22;
+
+    background: #fff9e5;
+}
+
+
+/* DÒNG */
+
+.line-number {
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background: #dceff4;
+
+    color: #4c7682;
+
+    font-size: 18px;
+
+    font-weight: 900;
+
+    user-select: none;
+}
+
+
+/* =========================================================
+   DROP AREA
+========================================================= */
+
+.drop-area {
+
+    min-width: 0;
+
+    padding:
+        6px
+        9px;
+
+    padding-left:
+        calc(
+            9px +
+            var(--indent, 0) *
+            32px
+        );
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-content: center;
+
+    align-items: center;
+
+    gap: 7px;
+
+    transition:
+        padding-left .18s,
+        background .18s;
+}
+
+
+/* CHỮ GỢI Ý */
+
+.placeholder {
+
+    color: #a3b3b9;
+
+    font-size:
+        clamp(
+            13px,
+            1vw,
+            16px
+        );
+
+    font-style: italic;
+
+    pointer-events: none;
+
+    user-select: none;
+}
+
+
+/* =========================================================
+   THANH NÚT KHAY
+========================================================= */
+
+.tray-buttons {
+
+    padding: 4px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap: 4px;
+
+    background: #eef5f7;
+}
+
+.tray-buttons button {
+
+    border:
+        1px solid
+        #d2e3e8;
+
+    background: white;
+
+    color: #496772;
+
+    border-radius: 7px;
+
+    font-size: 17px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition: .12s;
+}
+
+.tray-buttons button:hover {
+
+    background: #dcecf2;
+}
+
+.tray-buttons .delete-tray {
+
+    color: #dc5252;
+}
+
+
+/* =========================================================
+   THẺ
+========================================================= */
+
+.card {
+
+    position: relative;
+
+    min-height: 38px;
+
+    min-width: 40px;
+
+    padding:
+        6px
+        11px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    border:
+        2px solid
+        rgba(
+            0,
+            0,
+            0,
+            .07
+        );
+
+    font-family:
+        Consolas,
+        "Courier New",
+        monospace;
+
+    font-size:
+        clamp(
+            17px,
+            1.25vw,
+            22px
+        );
+
+    font-weight: 900;
+
+    white-space: nowrap;
+
+    cursor: grab;
+
+    user-select: none;
+
+    box-shadow:
+        0 4px 0
+        rgba(
+            0,
+            0,
+            0,
+            .13
+        );
+
+    transition:
+        transform .12s,
+        opacity .12s,
+        filter .12s;
+}
+
+.card:hover {
+
+    transform:
+        translateY(-2px);
+}
+
+.card:active {
+
+    cursor: grabbing;
+}
+
+
+/* =========================================================
+   MÀU THẺ
+========================================================= */
+
+.type-variable {
+
+    background:
+        var(--variable);
+
+    color: #173b30;
+}
+
+.type-number {
+
+    background:
+        var(--number);
+
+    color: #5a4215;
+}
+
+.type-command {
+
+    background:
+        var(--command);
+
+    color: white;
+}
+
+.type-operator {
+
+    background:
+        var(--operator);
+
+    color: #592727;
+}
+
+.type-symbol {
+
+    background:
+        var(--symbol);
+
+    color: #123c57;
+}
+
+
+/* =========================================================
+   THẺ TRONG KHAY
+   BẤM VÀO = XÓA
+========================================================= */
+
+.drop-area .card {
+
+    cursor: pointer;
+}
+
+
+/* dấu X góc thẻ */
+
+.drop-area .card::after {
+
+    content: "×";
+
+    position: absolute;
+
+    right: -7px;
+    top: -7px;
+
+    width: 18px;
+    height: 18px;
+
+    border-radius: 50%;
+
+    background: #e34f4f;
+
+    color: white;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+
+    transform:
+        scale(.7);
+
+    transition: .12s;
+
+    box-shadow:
+        0 2px 5px
+        rgba(
+            0,
+            0,
+            0,
+            .2
+        );
+}
+
+.drop-area .card:hover::after {
+
+    opacity: 1;
+
+    transform:
+        scale(1);
+}
+
+
+/* =========================================================
+   THẺ ĐANG KÉO
+========================================================= */
+
+.card.dragging {
+
+    opacity: .4;
+
+    transform:
+        scale(.92);
+}
+
+
+/* =========================================================
+   VỊ TRÍ CHÈN
+========================================================= */
+
+.card.insert-before {
+
+    margin-left: 8px;
+}
+
+.card.insert-before::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: -8px;
+    top: -4px;
+
+    width: 4px;
+
+    height:
+        calc(
+            100% +
+            8px
+        );
+
+    border-radius: 4px;
+
+    background: #f1a31f;
+
+    box-shadow:
+        0 0 7px
+        rgba(
+            241,
+            163,
+            31,
+            .65
+        );
+}
+
+
+/* =========================================================
+   NÚT DƯỚI WORKSPACE
+========================================================= */
+
+.workspace-footer {
+
+    padding:
+        8px
+        11px
+        11px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr
+        1.15fr;
+
+    gap: 7px;
+}
+
+.action-btn {
+
+    min-height: 44px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    color: white;
+
+    font-size:
+        clamp(
+            14px,
+            1.1vw,
+            18px
+        );
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition: .14s;
+}
+
+.action-btn:hover {
+
+    transform:
+        translateY(-2px);
+}
+
+.add-tray {
+
+    background: #477d89;
+}
+
+.clear {
+
+    background: #e78838;
+}
+
+.check {
+
+    background:
+        linear-gradient(
+            135deg,
+            #25a96e,
+            #148955
+        );
+}
+
+
+/* =========================================================
+   CARD BANK
+========================================================= */
+
+.bank {
+
+    min-height: 0;
+
+    display: grid;
+
+    grid-template-rows:
+        auto
+        1fr
+        auto;
+}
+
+.bank-content {
+
+    min-height: 0;
+
+    overflow-y: auto;
+
+    padding: 8px;
+}
+
+
+/* =========================================================
+   NHÓM THẺ
+========================================================= */
+
+.bank-group {
+
+    margin-bottom: 7px;
+
+    background: #f9fcfd;
+
+    border:
+        1px solid
+        #dbe9ed;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+}
+
+.group-title {
+
+    padding:
+        5px
+        9px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    font-size:
+        clamp(
+            12px,
+            .95vw,
+            15px
+        );
+
+    font-weight: 900;
+}
+
+.dot {
+
+    width: 14px;
+    height: 14px;
+
+    border-radius: 4px;
+
+    flex-shrink: 0;
+}
+
+.bank-cards {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+    padding:
+        6px
+        8px
+        9px;
+}
+
+.bank-cards .card {
+
+    min-height: 34px;
+
+    padding:
+        4px
+        8px;
+
+    font-size:
+        clamp(
+            15px,
+            1vw,
+            19px
+        );
+}
+
+
+/* =========================================================
+   TẠO THẺ MỚI
+========================================================= */
+
+.custom {
+
+    padding:
+        8px
+        9px
+        10px;
+
+    background: #edf6f8;
+
+    border-top:
+        2px solid
+        #d4e5e9;
+}
+
+.custom-title {
+
+    margin-bottom: 6px;
+
+    color: #416e78;
+
+    font-size: 14px;
+
+    font-weight: 900;
+}
+
+.custom-row {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        105px
+        42px;
+
+    gap: 5px;
+}
+
+.custom-row input,
+.custom-row select {
+
+    min-width: 0;
+
+    height: 38px;
+
+    padding:
+        0
+        8px;
+
+    border:
+        2px solid
+        #c4dce2;
+
+    border-radius: 8px;
+
+    background: white;
+
+    outline: none;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+.custom-row input:focus,
+.custom-row select:focus {
+
+    border-color: #3687d5;
+}
+
+.custom-row button {
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #347fce;
+
+    color: white;
+
+    font-size: 23px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(
+            24,
+            47,
+            59,
+            .48
+        );
+
+    backdrop-filter:
+        blur(5px);
+}
+
+.modal.show {
+
+    display: flex;
+}
+
+.modal-box {
+
+    width:
+        min(
+            560px,
+            92vw
+        );
+
+    padding: 28px;
+
+    text-align: center;
+
+    background: white;
+
+    border:
+        5px solid
+        #55bf8a;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 60px
+        rgba(
+            0,
+            0,
+            0,
+            .25
+        );
+
+    animation:
+        popup .22s ease;
+}
+
+@keyframes popup {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(.82);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+}
+
+.modal-icon {
+
+    margin-bottom: 5px;
+
+    font-size: 65px;
+}
+
+.modal-box h2 {
+
+    margin-bottom: 8px;
+
+    font-size: 31px;
+
+    color: #354d57;
+}
+
+.modal-box p {
+
+    font-size: 18px;
+
+    line-height: 1.5;
+
+    color: #576c74;
+}
+
+.modal-box button {
+
+    margin-top: 18px;
+
+    min-width: 140px;
+    min-height: 44px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: #347fce;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   CONFETTI
+========================================================= */
+
+.confetti {
+
+    position: fixed;
+
+    top: -20px;
+
+    width: 10px;
+    height: 16px;
+
+    z-index: 2000;
+
+    pointer-events: none;
+
+    animation:
+        confettiFall
+        linear
+        forwards;
+}
+
+@keyframes confettiFall {
+
+    to {
+
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .main {
+
+        grid-template-columns:
+            minmax(0, 1.45fr)
+            minmax(315px, .75fr);
+    }
+
+    .header-actions {
+
+        gap: 4px;
+    }
+
+    .header-btn {
+
+        padding:
+            6px
+            9px;
+    }
+}
+
+
+/* MÀN HÌNH THẤP */
+
+@media (max-height: 720px) {
+
+    .app {
+
+        padding: 5px;
+
+        gap: 5px;
+    }
+
+    .header {
+
+        min-height: 62px;
+
+        padding:
+            5px
+            10px;
+    }
+
+    .question-tag {
+
+        padding:
+            8px
+            12px;
+    }
+
+    .panel-header {
+
+        min-height: 40px;
+
+        padding:
+            5px
+            11px;
+    }
+
+    .tray {
+
+        min-height: 47px;
+
+        margin-bottom: 4px;
+    }
+
+    .card {
+
+        min-height: 31px;
+
+        padding:
+            3px
+            7px;
+    }
+
+    .workspace-footer {
+
+        padding:
+            5px
+            9px
+            7px;
+    }
+
+    .action-btn {
+
+        min-height: 38px;
+    }
+
+    .bank-group {
+
+        margin-bottom: 4px;
+    }
+
+    .bank-cards {
+
+        padding:
+            4px
+            7px
+            6px;
+    }
+}
+
+</style>
 </head>
+
 
 <body>
 
-    <div class="app">
+<div class="app">
 
-        <!-- =========================
-             THANH CÂU HỎI
-        ========================== -->
-        <header class="question-header">
 
-            <div class="question-number">
-                CÂU HỎI 1
-            </div>
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
-            <h1>
-                Tính tổng các số tự nhiên chẵn nhỏ hơn
-                <span>n</span> với <span>n = 10</span>
-            </h1>
+<header class="header">
 
-            <div class="header-actions">
+    <div class="question-tag">
 
-                <button id="fullscreenBtn" class="fullscreen-btn">
-                    ⛶ Toàn màn hình
-                </button>
-
-                <button id="resetBtn" class="reset-btn">
-                    ↻ Làm lại
-                </button>
-
-            </div>
-
-        </header>
-
-
-        <!-- =========================
-             KHU VỰC CHÍNH
-        ========================== -->
-        <main class="game-layout">
-
-
-            <!-- =========================
-                 BÊN TRÁI
-            ========================== -->
-            <section class="program-panel">
-
-                <div class="panel-header">
-
-                    <h2>
-                        🧩 LẮP GHÉP CHƯƠNG TRÌNH
-                    </h2>
-
-                    <p>
-                        Kéo để đổi vị trí • Bấm thẻ trong khay để xóa
-                    </p>
-
-                </div>
-
-
-                <!-- CÁC KHAY -->
-                <div class="slots-area" id="slotsArea">
-
-                    <!-- KHAY 1 -->
-                    <div class="code-slot" data-index="0">
-
-                        <div class="slot-number">1</div>
-
-                        <div class="slot-content">
-                            <span class="slot-placeholder">
-                                Thả thẻ vào đây...
-                            </span>
-                        </div>
-
-                        <div class="slot-controls">
-
-                            <div class="control-row">
-
-                                <button class="move-left">
-                                    ←
-                                </button>
-
-                                <button class="move-right">
-                                    →
-                                </button>
-
-                            </div>
-
-                            <div class="control-row">
-
-                                <button class="clear-line">
-                                    ⌫
-                                </button>
-
-                                <button class="delete-line">
-                                    ×
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- KHAY 2 -->
-                    <div class="code-slot active-slot" data-index="1">
-
-                        <div class="slot-number">2</div>
-
-                        <div class="slot-content">
-                            <span class="slot-placeholder">
-                                Thả thẻ vào đây...
-                            </span>
-                        </div>
-
-                        <div class="slot-controls">
-
-                            <div class="control-row">
-
-                                <button class="move-left">
-                                    ←
-                                </button>
-
-                                <button class="move-right">
-                                    →
-                                </button>
-
-                            </div>
-
-                            <div class="control-row">
-
-                                <button class="clear-line">
-                                    ⌫
-                                </button>
-
-                                <button class="delete-line">
-                                    ×
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- KHAY 3 -->
-                    <div class="code-slot" data-index="2">
-
-                        <div class="slot-number">3</div>
-
-                        <div class="slot-content">
-                            <span class="slot-placeholder">
-                                Thả thẻ vào đây...
-                            </span>
-                        </div>
-
-                        <div class="slot-controls">
-
-                            <div class="control-row">
-
-                                <button class="move-left">
-                                    ←
-                                </button>
-
-                                <button class="move-right">
-                                    →
-                                </button>
-
-                            </div>
-
-                            <div class="control-row">
-
-                                <button class="clear-line">
-                                    ⌫
-                                </button>
-
-                                <button class="delete-line">
-                                    ×
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- KHAY 4 -->
-                    <div class="code-slot" data-index="3">
-
-                        <div class="slot-number">4</div>
-
-                        <div class="slot-content">
-                            <span class="slot-placeholder">
-                                Thả thẻ vào đây...
-                            </span>
-                        </div>
-
-                        <div class="slot-controls">
-
-                            <div class="control-row">
-
-                                <button class="move-left">
-                                    ←
-                                </button>
-
-                                <button class="move-right">
-                                    →
-                                </button>
-
-                            </div>
-
-                            <div class="control-row">
-
-                                <button class="clear-line">
-                                    ⌫
-                                </button>
-
-                                <button class="delete-line">
-                                    ×
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- KHAY 5 -->
-                    <div class="code-slot" data-index="4">
-
-                        <div class="slot-number">5</div>
-
-                        <div class="slot-content">
-                            <span class="slot-placeholder">
-                                Thả thẻ vào đây...
-                            </span>
-                        </div>
-
-                        <div class="slot-controls">
-
-                            <div class="control-row">
-
-                                <button class="move-left">
-                                    ←
-                                </button>
-
-                                <button class="move-right">
-                                    →
-                                </button>
-
-                            </div>
-
-                            <div class="control-row">
-
-                                <button class="clear-line">
-                                    ⌫
-                                </button>
-
-                                <button class="delete-line">
-                                    ×
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- KHAY 6 -->
-                    <div class="code-slot" data-index="5">
-
-                        <div class="slot-number">6</div>
-
-                        <div class="slot-content">
-                            <span class="slot-placeholder">
-                                Thả thẻ vào đây...
-                            </span>
-                        </div>
-
-                        <div class="slot-controls">
-
-                            <div class="control-row">
-
-                                <button class="move-left">
-                                    ←
-                                </button>
-
-                                <button class="move-right">
-                                    →
-                                </button>
-
-                            </div>
-
-                            <div class="control-row">
-
-                                <button class="clear-line">
-                                    ⌫
-                                </button>
-
-                                <button class="delete-line">
-                                    ×
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- NÚT DƯỚI -->
-                <div class="bottom-actions">
-
-                    <button id="addSlotBtn" class="add-slot-btn">
-                        ＋ Thêm khay
-                    </button>
-
-                    <button id="clearAllBtn" class="clear-all-btn">
-                        🧹 Xóa thẻ
-                    </button>
-
-                    <button id="checkBtn" class="check-btn">
-                        ✓ KIỂM TRA
-                    </button>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- =========================
-                 BÊN PHẢI - KHO THẺ
-            ========================== -->
-            <section class="cards-panel">
-
-                <div class="panel-header cards-header">
-
-                    <h2>
-                        🎴 KHO THẺ
-                    </h2>
-
-                    <p>
-                        Bấm hoặc kéo thẻ
-                    </p>
-
-                </div>
-
-
-                <div class="cards-body">
-
-
-                    <!-- BIẾN -->
-                    <div class="card-box">
-
-                        <h3>
-                            <span class="dot variable-dot"></span>
-                            THẺ BIẾN
-                        </h3>
-
-                        <div class="cards-row">
-
-                            <button class="code-card variable" data-value="n">
-                                n
-                            </button>
-
-                            <button class="code-card variable" data-value="S">
-                                S
-                            </button>
-
-                            <button class="code-card variable" data-value="k">
-                                k
-                            </button>
-
-                            <button class="code-card variable" data-value="C">
-                                C
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- SỐ -->
-                    <div class="card-box">
-
-                        <h3>
-                            <span class="dot number-dot"></span>
-                            THẺ SỐ
-                        </h3>
-
-                        <div class="cards-row">
-
-                            <button class="code-card number" data-value="0">
-                                0
-                            </button>
-
-                            <button class="code-card number" data-value="1">
-                                1
-                            </button>
-
-                            <button class="code-card number" data-value="2">
-                                2
-                            </button>
-
-                            <button class="code-card number" data-value="3">
-                                3
-                            </button>
-
-                            <button class="code-card number" data-value="10">
-                                10
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- LỆNH -->
-                    <div class="card-box">
-
-                        <h3>
-                            <span class="dot command-dot"></span>
-                            THẺ LỆNH
-                        </h3>
-
-                        <div class="cards-row">
-
-                            <button class="code-card command" data-value="for">
-                                for
-                            </button>
-
-                            <button class="code-card command" data-value="in">
-                                in
-                            </button>
-
-                            <button class="code-card command" data-value="range">
-                                range
-                            </button>
-
-                            <button class="code-card command" data-value="if">
-                                if
-                            </button>
-
-                            <button class="code-card command" data-value="print">
-                                print
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- TOÁN TỬ -->
-                    <div class="card-box">
-
-                        <h3>
-                            <span class="dot operator-dot"></span>
-                            PHÉP TÍNH / TOÁN TỬ
-                        </h3>
-
-                        <div class="cards-row">
-
-                            <button class="code-card operator" data-value="=">
-                                =
-                            </button>
-
-                            <button class="code-card operator" data-value="%">
-                                %
-                            </button>
-
-                            <button class="code-card operator" data-value="==">
-                                ==
-                            </button>
-
-                            <button class="code-card operator" data-value="+">
-                                +
-                            </button>
-
-                            <button class="code-card operator" data-value="-">
-                                −
-                            </button>
-
-                            <button class="code-card operator" data-value="<">
-                                &lt;
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- KÝ HIỆU -->
-                    <div class="card-box">
-
-                        <h3>
-                            <span class="dot symbol-dot"></span>
-                            THẺ KÝ HIỆU
-                        </h3>
-
-                        <div class="cards-row">
-
-                            <button class="code-card symbol" data-value="(">
-                                (
-                            </button>
-
-                            <button class="code-card symbol" data-value=")">
-                                )
-                            </button>
-
-                            <button class="code-card symbol" data-value=":">
-                                :
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- THẺ TỰ TẠO -->
-                    <div class="card-box custom-box">
-
-                        <h3>
-                            ⭐ THẺ TỰ TẠO
-                        </h3>
-
-                        <div id="customCards" class="cards-row"></div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- TỰ VIẾT THẺ -->
-                <div class="custom-card-footer">
-
-                    <h3>
-                        ✏️ TỰ VIẾT THÊM THẺ
-                    </h3>
-
-                    <div class="custom-input-row">
-
-                        <input
-                            id="customInput"
-                            type="text"
-                            placeholder="Nhập nội dung..."
-                        >
-
-                        <select id="customType">
-
-                            <option value="variable">
-                                Biến
-                            </option>
-
-                            <option value="number">
-                                Số
-                            </option>
-
-                            <option value="command">
-                                Lệnh
-                            </option>
-
-                            <option value="operator">
-                                Toán tử
-                            </option>
-
-                            <option value="symbol">
-                                Ký hiệu
-                            </option>
-
-                        </select>
-
-                        <button id="addCustomBtn">
-                            ＋
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-        </main>
+        CÂU HỎI 1
 
     </div>
 
 
-    <!-- =========================
-         THÔNG BÁO
-    ========================== -->
-    <div id="toast" class="toast"></div>
+    <div class="question">
+
+        <h1>
+
+            Tính tổng các số tự nhiên
+            <strong>chẵn</strong>
+            nhỏ hơn n,
+            với
+            <strong>n = 10</strong>
+
+        </h1>
+
+    </div>
 
 
-    <!-- =========================
-         POPUP ĐÚNG
-    ========================== -->
-    <div id="successOverlay" class="success-overlay">
+    <div class="header-actions">
 
-        <div class="success-box">
+        <button
+            class="header-btn fullscreen"
+            onclick="toggleFullscreen()"
+        >
 
-            <div class="success-icon">
-                🎉
-            </div>
+            ⛶ Toàn màn hình
 
-            <h2>
-                Chính xác!
-            </h2>
+        </button>
 
-            <p>
-                Bạn đã lắp ghép chương trình đúng.
-            </p>
 
-            <button id="closeSuccessBtn">
-                Tiếp tục
-            </button>
+        <button
+            class="header-btn reset"
+            onclick="resetGame()"
+        >
+
+            ↻ Làm lại
+
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="main">
+
+
+<!-- =========================================================
+     WORKSPACE
+========================================================= -->
+
+<section class="panel workspace">
+
+    <div class="panel-header">
+
+        <h2>
+            🧩 LẮP GHÉP CHƯƠNG TRÌNH
+        </h2>
+
+        <div class="tip">
+
+            Kéo để đổi vị trí •
+            Bấm thẻ trong khay để xóa
 
         </div>
 
     </div>
 
 
-    <script src="script.js"></script>
+    <div
+        class="trays"
+        id="trays"
+    >
+    </div>
+
+
+    <div class="workspace-footer">
+
+        <button
+            class="action-btn add-tray"
+            onclick="addTray()"
+        >
+
+            ＋ Thêm khay
+
+        </button>
+
+
+        <button
+            class="action-btn clear"
+            onclick="clearAllCards()"
+        >
+
+            🧹 Xóa thẻ
+
+        </button>
+
+
+        <button
+            class="action-btn check"
+            onclick="checkAnswer()"
+        >
+
+            ✓ KIỂM TRA
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     KHO THẺ
+========================================================= -->
+
+<aside class="panel bank">
+
+
+    <div class="panel-header">
+
+        <h2>
+            🎴 KHO THẺ
+        </h2>
+
+        <div class="tip">
+
+            Bấm hoặc kéo thẻ
+
+        </div>
+
+    </div>
+
+
+
+    <div
+        class="bank-content"
+        id="bankContent"
+    >
+
+
+        <!-- ================= BIẾN ================= -->
+
+        <div class="bank-group">
+
+            <div class="group-title">
+
+                <span
+                    class="dot"
+                    style="background: var(--variable)"
+                ></span>
+
+                THẺ BIẾN
+
+            </div>
+
+
+            <div class="bank-cards">
+
+                <div
+                    class="card type-variable bank-card"
+                    draggable="true"
+                    data-type="variable"
+                    data-value="n"
+                >
+                    n
+                </div>
+
+
+                <div
+                    class="card type-variable bank-card"
+                    draggable="true"
+                    data-type="variable"
+                    data-value="S"
+                >
+                    S
+                </div>
+
+
+                <div
+                    class="card type-variable bank-card"
+                    draggable="true"
+                    data-type="variable"
+                    data-value="k"
+                >
+                    k
+                </div>
+
+
+                <!-- THẺ NHIỄU -->
+
+                <div
+                    class="card type-variable bank-card"
+                    draggable="true"
+                    data-type="variable"
+                    data-value="C"
+                >
+                    C
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= SỐ ================= -->
+
+        <div class="bank-group">
+
+            <div class="group-title">
+
+                <span
+                    class="dot"
+                    style="background: var(--number)"
+                ></span>
+
+                THẺ SỐ
+
+            </div>
+
+
+            <div class="bank-cards">
+
+                <div
+                    class="card type-number bank-card"
+                    draggable="true"
+                    data-type="number"
+                    data-value="0"
+                >
+                    0
+                </div>
+
+                <div
+                    class="card type-number bank-card"
+                    draggable="true"
+                    data-type="number"
+                    data-value="1"
+                >
+                    1
+                </div>
+
+                <div
+                    class="card type-number bank-card"
+                    draggable="true"
+                    data-type="number"
+                    data-value="2"
+                >
+                    2
+                </div>
+
+                <div
+                    class="card type-number bank-card"
+                    draggable="true"
+                    data-type="number"
+                    data-value="3"
+                >
+                    3
+                </div>
+
+                <div
+                    class="card type-number bank-card"
+                    draggable="true"
+                    data-type="number"
+                    data-value="10"
+                >
+                    10
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= LỆNH ================= -->
+
+        <div class="bank-group">
+
+            <div class="group-title">
+
+                <span
+                    class="dot"
+                    style="background: var(--command)"
+                ></span>
+
+                THẺ LỆNH
+
+            </div>
+
+
+            <div class="bank-cards">
+
+                <div
+                    class="card type-command bank-card"
+                    draggable="true"
+                    data-type="command"
+                    data-value="for"
+                >
+                    for
+                </div>
+
+
+                <div
+                    class="card type-command bank-card"
+                    draggable="true"
+                    data-type="command"
+                    data-value="in"
+                >
+                    in
+                </div>
+
+
+                <div
+                    class="card type-command bank-card"
+                    draggable="true"
+                    data-type="command"
+                    data-value="range"
+                >
+                    range
+                </div>
+
+
+                <div
+                    class="card type-command bank-card"
+                    draggable="true"
+                    data-type="command"
+                    data-value="if"
+                >
+                    if
+                </div>
+
+
+                <div
+                    class="card type-command bank-card"
+                    draggable="true"
+                    data-type="command"
+                    data-value="print"
+                >
+                    print
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= TOÁN TỬ ================= -->
+
+        <div class="bank-group">
+
+            <div class="group-title">
+
+                <span
+                    class="dot"
+                    style="background: var(--operator)"
+                ></span>
+
+                PHÉP TÍNH / TOÁN TỬ
+
+            </div>
+
+
+            <div class="bank-cards">
+
+                <div
+                    class="card type-operator bank-card"
+                    draggable="true"
+                    data-type="operator"
+                    data-value="="
+                >
+                    =
+                </div>
+
+
+                <div
+                    class="card type-operator bank-card"
+                    draggable="true"
+                    data-type="operator"
+                    data-value="%"
+                >
+                    %
+                </div>
+
+
+                <div
+                    class="card type-operator bank-card"
+                    draggable="true"
+                    data-type="operator"
+                    data-value="=="
+                >
+                    ==
+                </div>
+
+
+                <div
+                    class="card type-operator bank-card"
+                    draggable="true"
+                    data-type="operator"
+                    data-value="+"
+                >
+                    +
+                </div>
+
+
+                <!-- THẺ GÂY NHIỄU -->
+
+                <div
+                    class="card type-operator bank-card"
+                    draggable="true"
+                    data-type="operator"
+                    data-value="-"
+                >
+                    −
+                </div>
+
+
+                <div
+                    class="card type-operator bank-card"
+                    draggable="true"
+                    data-type="operator"
+                    data-value="<"
+                >
+                    &lt;
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= KÝ HIỆU ================= -->
+
+        <div class="bank-group">
+
+            <div class="group-title">
+
+                <span
+                    class="dot"
+                    style="background: var(--symbol)"
+                ></span>
+
+                THẺ KÝ HIỆU
+
+            </div>
+
+
+            <div class="bank-cards">
+
+                <div
+                    class="card type-symbol bank-card"
+                    draggable="true"
+                    data-type="symbol"
+                    data-value="("
+                >
+                    (
+                </div>
+
+
+                <div
+                    class="card type-symbol bank-card"
+                    draggable="true"
+                    data-type="symbol"
+                    data-value=")"
+                >
+                    )
+                </div>
+
+
+                <div
+                    class="card type-symbol bank-card"
+                    draggable="true"
+                    data-type="symbol"
+                    data-value=":"
+                >
+                    :
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= THẺ TỰ TẠO ================= -->
+
+        <div
+            class="bank-group"
+            id="customGroup"
+        >
+
+            <div class="group-title">
+
+                ⭐ THẺ TỰ TẠO
+
+            </div>
+
+
+            <div
+                class="bank-cards"
+                id="customCards"
+            >
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         TẠO THẺ
+    ====================================================== -->
+
+    <div class="custom">
+
+        <div class="custom-title">
+
+            ✏️ TỰ VIẾT THÊM THẺ
+
+        </div>
+
+
+        <div class="custom-row">
+
+            <input
+                type="text"
+                id="customText"
+                placeholder="Nhập nội dung..."
+                maxlength="18"
+            >
+
+
+            <select id="customType">
+
+                <option value="variable">
+                    Biến
+                </option>
+
+                <option value="number">
+                    Số
+                </option>
+
+                <option value="command">
+                    Lệnh
+                </option>
+
+                <option value="operator">
+                    Toán tử
+                </option>
+
+                <option value="symbol">
+                    Ký hiệu
+                </option>
+
+            </select>
+
+
+            <button
+                onclick="createCustomCard()"
+                title="Tạo thẻ mới"
+            >
+                ＋
+            </button>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+</main>
+
+</div>
+
+
+
+<!-- =========================================================
+     MODAL
+========================================================= -->
+
+<div
+    class="modal"
+    id="modal"
+>
+
+    <div
+        class="modal-box"
+        id="modalBox"
+    >
+
+        <div
+            class="modal-icon"
+            id="modalIcon"
+        >
+            🎉
+        </div>
+
+
+        <h2 id="modalTitle">
+
+            Chính xác!
+
+        </h2>
+
+
+        <p id="modalText">
+
+        </p>
+
+
+        <button
+            onclick="closeModal()"
+        >
+
+            Tiếp tục
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+/* =========================================================
+   BIẾN TOÀN CỤC
+========================================================= */
+
+let selectedTray = null;
+
+let dragData = null;
+
+let insertionCard = null;
+
+
+/* =========================================================
+   ĐÁP ÁN
+========================================================= */
+
+const correctAnswer = [
+
+    {
+        indent: 0,
+        tokens:
+        [
+            "n",
+            "=",
+            "10"
+        ]
+    },
+
+    {
+        indent: 0,
+        tokens:
+        [
+            "S",
+            "=",
+            "0"
+        ]
+    },
+
+    {
+        indent: 0,
+        tokens:
+        [
+            "for",
+            "k",
+            "in",
+            "range",
+            "(",
+            "n",
+            ")",
+            ":"
+        ]
+    },
+
+    {
+        indent: 1,
+        tokens:
+        [
+            "if",
+            "k",
+            "%",
+            "2",
+            "==",
+            "0",
+            ":"
+        ]
+    },
+
+    {
+        indent: 2,
+        tokens:
+        [
+            "S",
+            "=",
+            "S",
+            "+",
+            "k"
+        ]
+    },
+
+    {
+        indent: 0,
+        tokens:
+        [
+            "print",
+            "(",
+            "S",
+            ")"
+        ]
+    }
+
+];
+
+
+
+/* =========================================================
+   KHỞI TẠO
+========================================================= */
+
+window.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        /* Tạo sẵn 6 khay */
+
+        for (
+            let i = 0;
+            i < 6;
+            i++
+        ) {
+
+            addTray(false);
+
+        }
+
+
+        setupBankCards();
+
+
+        const firstTray =
+            document.querySelector(
+                ".tray"
+            );
+
+        if (firstTray) {
+
+            selectTray(
+                firstTray
+            );
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   TẠO KHAY
+========================================================= */
+
+function addTray(
+    autoSelect = true
+) {
+
+    const container =
+        document.getElementById(
+            "trays"
+        );
+
+
+    const tray =
+        document.createElement(
+            "div"
+        );
+
+
+    tray.className =
+        "tray";
+
+
+    tray.dataset.indent =
+        "0";
+
+
+    tray.innerHTML = `
+
+        <div class="line-number"></div>
+
+        <div
+            class="drop-area"
+            style="--indent:0"
+        >
+
+            <span class="placeholder">
+                Thả thẻ vào đây...
+            </span>
+
+        </div>
+
+
+        <div class="tray-buttons">
+
+            <button
+                title="Giảm thụt lề"
+                onclick="
+                    changeIndent(
+                        event,
+                        this,
+                        -1
+                    )
+                "
+            >
+                ←
+            </button>
+
+
+            <button
+                title="Tăng thụt lề"
+                onclick="
+                    changeIndent(
+                        event,
+                        this,
+                        1
+                    )
+                "
+            >
+                →
+            </button>
+
+
+            <button
+                title="Xóa toàn bộ thẻ trong dòng"
+                onclick="
+                    clearTray(
+                        event,
+                        this
+                    )
+                "
+            >
+                ⌫
+            </button>
+
+
+            <button
+                class="delete-tray"
+                title="Xóa dòng"
+                onclick="
+                    deleteTray(
+                        event,
+                        this
+                    )
+                "
+            >
+                ×
+            </button>
+
+        </div>
+
+    `;
+
+
+    container.appendChild(
+        tray
+    );
+
+
+    setupTray(
+        tray
+    );
+
+
+    updateLineNumbers();
+
+
+    if (autoSelect) {
+
+        selectTray(
+            tray
+        );
+
+
+        tray.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
+        });
+
+    }
+
+}
+
+
+
+/* =========================================================
+   CẤU HÌNH KHAY
+========================================================= */
+
+function setupTray(
+    tray
+) {
+
+    const area =
+        tray.querySelector(
+            ".drop-area"
+        );
+
+
+    /* =====================================================
+       CLICK CHỌN KHAY
+    ====================================================== */
+
+    tray.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                event.target.closest(
+                    "button"
+                )
+            ) {
+
+                return;
+
+            }
+
+
+            if (
+                event.target.closest(
+                    ".card"
+                )
+            ) {
+
+                return;
+
+            }
+
+
+            selectTray(
+                tray
+            );
+
+        }
+    );
+
+
+
+    /* =====================================================
+       DRAG OVER
+    ====================================================== */
+
+    area.addEventListener(
+        "dragover",
+        function (event) {
+
+            event.preventDefault();
+
+
+            tray.classList.add(
+                "drag-over"
+            );
+
+
+            clearInsertionMarker();
+
+
+            insertionCard =
+                findInsertionCard(
+                    area,
+                    event.clientX,
+                    event.clientY
+                );
+
+
+            if (
+                insertionCard
+            ) {
+
+                insertionCard
+                    .classList
+                    .add(
+                        "insert-before"
+                    );
+
+            }
+
+        }
+    );
+
+
+
+    /* =====================================================
+       DRAG LEAVE
+    ====================================================== */
+
+    area.addEventListener(
+        "dragleave",
+        function (event) {
+
+            if (
+                !area.contains(
+                    event.relatedTarget
+                )
+            ) {
+
+                tray.classList.remove(
+                    "drag-over"
+                );
+
+
+                clearInsertionMarker();
+
+            }
+
+        }
+    );
+
+
+
+    /* =====================================================
+       DROP
+    ====================================================== */
+
+    area.addEventListener(
+        "drop",
+        function (event) {
+
+            event.preventDefault();
+
+
+            tray.classList.remove(
+                "drag-over"
+            );
+
+
+            selectTray(
+                tray
+            );
+
+
+            if (
+                !dragData
+            ) {
+
+                clearInsertionMarker();
+
+                return;
+
+            }
+
+
+            const beforeCard =
+                findInsertionCard(
+                    area,
+                    event.clientX,
+                    event.clientY
+                );
+
+
+            /* =============================================
+               KÉO THẺ ĐANG CÓ TRONG KHAY
+            ============================================== */
+
+            if (
+                dragData.source ===
+                "tray"
+            ) {
+
+                const card =
+                    dragData.element;
+
+
+                const oldArea =
+                    card.parentElement;
+
+
+                removePlaceholder(
+                    area
+                );
+
+
+                if (
+                    beforeCard &&
+                    beforeCard !==
+                    card
+                ) {
+
+                    area.insertBefore(
+                        card,
+                        beforeCard
+                    );
+
+                }
+
+                else {
+
+                    area.appendChild(
+                        card
+                    );
+
+                }
+
+
+                restorePlaceholder(
+                    oldArea
+                );
+
+            }
+
+
+            /* =============================================
+               KÉO TỪ KHO THẺ
+            ============================================== */
+
+            else {
+
+                const newCard =
+                    createTrayCard(
+                        dragData.value,
+                        dragData.type
+                    );
+
+
+                removePlaceholder(
+                    area
+                );
+
+
+                if (
+                    beforeCard
+                ) {
+
+                    area.insertBefore(
+                        newCard,
+                        beforeCard
+                    );
+
+                }
+
+                else {
+
+                    area.appendChild(
+                        newCard
+                    );
+
+                }
+
+            }
+
+
+            clearInsertionMarker();
+
+
+            dragData =
+                null;
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   XÁC ĐỊNH VỊ TRÍ CHÈN THẺ
+========================================================= */
+
+function findInsertionCard(
+    container,
+    x,
+    y
+) {
+
+    const cards =
+        [
+            ...container
+                .querySelectorAll(
+                    ".card:not(.dragging)"
+                )
+        ];
+
+
+    if (
+        cards.length === 0
+    ) {
+
+        return null;
+
+    }
+
+
+    /* =====================================================
+       Tìm dòng gần vị trí chuột nhất
+    ====================================================== */
+
+    for (
+        const card
+        of cards
+    ) {
+
+        const rect =
+            card.getBoundingClientRect();
+
+
+        const sameRow =
+            y >=
+            rect.top - 8
+            &&
+            y <=
+            rect.bottom + 8;
+
+
+        if (
+            sameRow
+        ) {
+
+            const middleX =
+                rect.left +
+                rect.width / 2;
+
+
+            if (
+                x <
+                middleX
+            ) {
+
+                return card;
+
+            }
+
+        }
+
+    }
+
+
+    /* =====================================================
+       Nếu đang nằm trên dòng phía trên
+       một thẻ phía dưới
+    ====================================================== */
+
+    for (
+        const card
+        of cards
+    ) {
+
+        const rect =
+            card.getBoundingClientRect();
+
+
+        if (
+            y <
+            rect.top
+        ) {
+
+            return card;
+
+        }
+
+    }
+
+
+    return null;
+
+}
+
+
+
+/* =========================================================
+   XÓA DẤU CHÈN
+========================================================= */
+
+function clearInsertionMarker() {
+
+    document
+        .querySelectorAll(
+            ".insert-before"
+        )
+        .forEach(
+            function (card) {
+
+                card
+                    .classList
+                    .remove(
+                        "insert-before"
+                    );
+
+            }
+        );
+
+
+    insertionCard =
+        null;
+
+}
+
+
+
+/* =========================================================
+   CHỌN KHAY
+========================================================= */
+
+function selectTray(
+    tray
+) {
+
+    document
+        .querySelectorAll(
+            ".tray"
+        )
+        .forEach(
+            function (item) {
+
+                item
+                    .classList
+                    .remove(
+                        "selected"
+                    );
+
+            }
+        );
+
+
+    tray
+        .classList
+        .add(
+            "selected"
+        );
+
+
+    selectedTray =
+        tray;
+
+}
+
+
+
+/* =========================================================
+   SETUP THẺ TRONG KHO
+========================================================= */
+
+function setupBankCards() {
+
+    document
+        .querySelectorAll(
+            ".bank-card"
+        )
+        .forEach(
+            function (card) {
+
+                setupOneBankCard(
+                    card
+                );
+
+            }
+        );
+
+}
+
+
+
+/* =========================================================
+   SETUP 1 THẺ TRONG KHO
+========================================================= */
+
+function setupOneBankCard(
+    card
+) {
+
+    /* KÉO */
+
+    card.addEventListener(
+        "dragstart",
+        function (event) {
+
+            dragData = {
+
+                source:
+                    "bank",
+
+                value:
+                    card.dataset.value,
+
+                type:
+                    card.dataset.type,
+
+                element:
+                    null
+
+            };
+
+
+            event.dataTransfer
+                .effectAllowed =
+                "copy";
+
+        }
+    );
+
+
+    card.addEventListener(
+        "dragend",
+        function () {
+
+            clearDragEffects();
+
+        }
+    );
+
+
+    /* CLICK THẺ KHO = THÊM */
+
+    card.addEventListener(
+        "click",
+        function () {
+
+            if (
+                !selectedTray
+            ) {
+
+                showResult(
+                    false,
+                    "Hãy chọn khay",
+                    "Em hãy chọn một khay trước khi thêm thẻ."
+                );
+
+                return;
+
+            }
+
+
+            addCardToTray(
+                card.dataset.value,
+                card.dataset.type,
+                selectedTray
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   TẠO THẺ DÙNG TRONG KHAY
+========================================================= */
+
+function createTrayCard(
+    value,
+    type
+) {
+
+    const card =
+        document.createElement(
+            "div"
+        );
+
+
+    card.className =
+        "card type-" +
+        type;
+
+
+    card.textContent =
+        value;
+
+
+    card.dataset.value =
+        value;
+
+
+    card.dataset.type =
+        type;
+
+
+    card.draggable =
+        true;
+
+
+
+    /* =====================================================
+       KÉO THẺ
+    ====================================================== */
+
+    card.addEventListener(
+        "dragstart",
+        function (event) {
+
+            event.stopPropagation();
+
+
+            dragData = {
+
+                source:
+                    "tray",
+
+                value:
+                    value,
+
+                type:
+                    type,
+
+                element:
+                    card
+
+            };
+
+
+            event.dataTransfer
+                .effectAllowed =
+                "move";
+
+
+            setTimeout(
+                function () {
+
+                    card
+                        .classList
+                        .add(
+                            "dragging"
+                        );
+
+                },
+                0
+            );
+
+        }
+    );
+
+
+
+    /* =====================================================
+       KẾT THÚC KÉO
+    ====================================================== */
+
+    card.addEventListener(
+        "dragend",
+        function () {
+
+            card
+                .classList
+                .remove(
+                    "dragging"
+                );
+
+
+            clearDragEffects();
+
+
+            dragData =
+                null;
+
+        }
+    );
+
+
+
+    /* =====================================================
+       BẤM 1 LẦN VÀO THẺ TRONG KHAY = XÓA
+    ====================================================== */
+
+    card.addEventListener(
+        "click",
+        function (event) {
+
+            event.stopPropagation();
+
+
+            const area =
+                card.parentElement;
+
+
+            card.remove();
+
+
+            restorePlaceholder(
+                area
+            );
+
+        }
+    );
+
+
+    return card;
+
+}
+
+
+
+/* =========================================================
+   THÊM THẺ VÀO KHAY
+========================================================= */
+
+function addCardToTray(
+    value,
+    type,
+    tray
+) {
+
+    if (
+        !tray
+    ) {
+
+        return;
+
+    }
+
+
+    const area =
+        tray.querySelector(
+            ".drop-area"
+        );
+
+
+    removePlaceholder(
+        area
+    );
+
+
+    const card =
+        createTrayCard(
+            value,
+            type
+        );
+
+
+    area.appendChild(
+        card
+    );
+
+}
+
+
+
+/* =========================================================
+   XÓA PLACEHOLDER
+========================================================= */
+
+function removePlaceholder(
+    area
+) {
+
+    if (
+        !area
+    ) {
+
+        return;
+
+    }
+
+
+    const placeholder =
+        area.querySelector(
+            ".placeholder"
+        );
+
+
+    if (
+        placeholder
+    ) {
+
+        placeholder.remove();
+
+    }
+
+}
+
+
+
+/* =========================================================
+   KHÔI PHỤC PLACEHOLDER
+========================================================= */
+
+function restorePlaceholder(
+    area
+) {
+
+    if (
+        !area
+    ) {
+
+        return;
+
+    }
+
+
+    const cards =
+        area.querySelectorAll(
+            ".card"
+        );
+
+
+    if (
+        cards.length === 0
+    ) {
+
+        area.innerHTML = `
+
+            <span class="placeholder">
+                Thả thẻ vào đây...
+            </span>
+
+        `;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   THỤT LỀ
+========================================================= */
+
+function changeIndent(
+    event,
+    button,
+    amount
+) {
+
+    event.stopPropagation();
+
+
+    const tray =
+        button.closest(
+            ".tray"
+        );
+
+
+    let indent =
+        Number(
+            tray.dataset.indent ||
+            0
+        );
+
+
+    indent +=
+        amount;
+
+
+    indent =
+        Math.max(
+            0,
+            Math.min(
+                indent,
+                3
+            )
+        );
+
+
+    tray.dataset.indent =
+        indent;
+
+
+    tray
+        .querySelector(
+            ".drop-area"
+        )
+        .style
+        .setProperty(
+            "--indent",
+            indent
+        );
+
+}
+
+
+
+/* =========================================================
+   XÓA TOÀN BỘ THẺ TRONG 1 KHAY
+========================================================= */
+
+function clearTray(
+    event,
+    button
+) {
+
+    event.stopPropagation();
+
+
+    const tray =
+        button.closest(
+            ".tray"
+        );
+
+
+    const area =
+        tray.querySelector(
+            ".drop-area"
+        );
+
+
+    area.innerHTML = `
+
+        <span class="placeholder">
+            Thả thẻ vào đây...
+        </span>
+
+    `;
+
+}
+
+
+
+/* =========================================================
+   XÓA KHAY
+========================================================= */
+
+function deleteTray(
+    event,
+    button
+) {
+
+    event.stopPropagation();
+
+
+    const allTrays =
+        document.querySelectorAll(
+            ".tray"
+        );
+
+
+    if (
+        allTrays.length <= 1
+    ) {
+
+        showResult(
+            false,
+            "Không thể xóa",
+            "Cần giữ lại ít nhất một khay."
+        );
+
+        return;
+
+    }
+
+
+    const tray =
+        button.closest(
+            ".tray"
+        );
+
+
+    const wasSelected =
+        tray ===
+        selectedTray;
+
+
+    tray.remove();
+
+
+    updateLineNumbers();
+
+
+    if (
+        wasSelected
+    ) {
+
+        const first =
+            document.querySelector(
+                ".tray"
+            );
+
+
+        if (
+            first
+        ) {
+
+            selectTray(
+                first
+            );
+
+        }
+
+    }
+
+}
+
+
+
+/* =========================================================
+   CẬP NHẬT SỐ DÒNG
+========================================================= */
+
+function updateLineNumbers() {
+
+    document
+        .querySelectorAll(
+            ".tray"
+        )
+        .forEach(
+            function (
+                tray,
+                index
+            ) {
+
+                tray
+                    .querySelector(
+                        ".line-number"
+                    )
+                    .textContent =
+                    index + 1;
+
+            }
+        );
+
+}
+
+
+
+/* =========================================================
+   XÓA THẺ TOÀN BỘ
+========================================================= */
+
+function clearAllCards() {
+
+    document
+        .querySelectorAll(
+            ".tray"
+        )
+        .forEach(
+            function (tray) {
+
+                tray.dataset.indent =
+                    "0";
+
+
+                const area =
+                    tray.querySelector(
+                        ".drop-area"
+                    );
+
+
+                area.style
+                    .setProperty(
+                        "--indent",
+                        0
+                    );
+
+
+                area.innerHTML = `
+
+                    <span class="placeholder">
+                        Thả thẻ vào đây...
+                    </span>
+
+                `;
+
+            }
+        );
+
+}
+
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+function resetGame() {
+
+    const container =
+        document.getElementById(
+            "trays"
+        );
+
+
+    container.innerHTML =
+        "";
+
+
+    selectedTray =
+        null;
+
+
+    dragData =
+        null;
+
+
+    for (
+        let i = 0;
+        i < 6;
+        i++
+    ) {
+
+        addTray(
+            false
+        );
+
+    }
+
+
+    const first =
+        document.querySelector(
+            ".tray"
+        );
+
+
+    if (
+        first
+    ) {
+
+        selectTray(
+            first
+        );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   TẠO THẺ TỰ DO
+========================================================= */
+
+function createCustomCard() {
+
+    const input =
+        document.getElementById(
+            "customText"
+        );
+
+
+    const typeSelect =
+        document.getElementById(
+            "customType"
+        );
+
+
+    const value =
+        input.value.trim();
+
+
+    if (
+        value === ""
+    ) {
+
+        input.focus();
+
+        return;
+
+    }
+
+
+    const type =
+        typeSelect.value;
+
+
+    const card =
+        document.createElement(
+            "div"
+        );
+
+
+    card.className =
+        "card type-" +
+        type +
+        " bank-card";
+
+
+    card.draggable =
+        true;
+
+
+    card.dataset.value =
+        value;
+
+
+    card.dataset.type =
+        type;
+
+
+    card.textContent =
+        value;
+
+
+    document
+        .getElementById(
+            "customCards"
+        )
+        .appendChild(
+            card
+        );
+
+
+    setupOneBankCard(
+        card
+    );
+
+
+    input.value =
+        "";
+
+
+    input.focus();
+
+}
+
+
+
+/* =========================================================
+   ENTER = TẠO THẺ
+========================================================= */
+
+document
+    .getElementById(
+        "customText"
+    )
+    .addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key ===
+                "Enter"
+            ) {
+
+                createCustomCard();
+
+            }
+
+        }
+    );
+
+
+
+/* =========================================================
+   LẤY BÀI HỌC SINH
+========================================================= */
+
+function getStudentAnswer() {
+
+    const result =
+        [];
+
+
+    document
+        .querySelectorAll(
+            ".tray"
+        )
+        .forEach(
+            function (tray) {
+
+                const cards =
+                    tray
+                        .querySelector(
+                            ".drop-area"
+                        )
+                        .querySelectorAll(
+                            ".card"
+                        );
+
+
+                if (
+                    cards.length === 0
+                ) {
+
+                    return;
+
+                }
+
+
+                const tokens =
+                    [
+                        ...cards
+                    ]
+                    .map(
+                        function (card) {
+
+                            return (
+                                card.dataset.value
+                            );
+
+                        }
+                    );
+
+
+                result.push({
+
+                    indent:
+                        Number(
+                            tray.dataset.indent ||
+                            0
+                        ),
+
+                    tokens:
+                        tokens
+
+                });
+
+            }
+        );
+
+
+    return result;
+
+}
+
+
+
+/* =========================================================
+   KIỂM TRA ĐÁP ÁN
+========================================================= */
+
+function checkAnswer() {
+
+    clearWrongHighlights();
+
+
+    const student =
+        getStudentAnswer();
+
+
+
+    /* =====================================================
+       KIỂM TRA SỐ DÒNG
+    ====================================================== */
+
+    if (
+        student.length !==
+        correctAnswer.length
+    ) {
+
+        showResult(
+
+            false,
+
+            "Chưa hoàn thành",
+
+            "Chương trình cần 6 dòng lệnh. Hãy kiểm tra lại số khay đã sử dụng."
+
+        );
+
+
+        return;
+
+    }
+
+
+
+    /* =====================================================
+       KIỂM TRA TỪNG DÒNG
+    ====================================================== */
+
+    for (
+        let i = 0;
+        i <
+        correctAnswer.length;
+        i++
+    ) {
+
+
+        const studentLine =
+            student[i];
+
+
+        const correctLine =
+            correctAnswer[i];
+
+
+
+        /* THỤT LỀ */
+
+        if (
+            studentLine.indent !==
+            correctLine.indent
+        ) {
+
+            highlightWrongLine(
+                i
+            );
+
+
+            showResult(
+
+                false,
+
+                "Gần đúng rồi!",
+
+                "Hãy kiểm tra lại mức thụt lề ở dòng " +
+                (i + 1) +
+                ". Trong Python, thụt lề rất quan trọng."
+
+            );
+
+
+            return;
+
+        }
+
+
+
+        /* SỐ THẺ */
+
+        if (
+            studentLine.tokens.length !==
+            correctLine.tokens.length
+        ) {
+
+            highlightWrongLine(
+                i
+            );
+
+
+            showResult(
+
+                false,
+
+                "Hãy kiểm tra lại",
+
+                "Số lượng thẻ ở dòng " +
+                (i + 1) +
+                " chưa chính xác."
+
+            );
+
+
+            return;
+
+        }
+
+
+
+        /* THỨ TỰ THẺ */
+
+        for (
+            let j = 0;
+            j <
+            correctLine.tokens.length;
+            j++
+        ) {
+
+            if (
+                studentLine.tokens[j] !==
+                correctLine.tokens[j]
+            ) {
+
+                highlightWrongLine(
+                    i
+                );
+
+
+                showResult(
+
+                    false,
+
+                    "Chưa chính xác",
+
+                    "Có một thẻ chưa đúng hoặc chưa đúng vị trí ở dòng " +
+                    (i + 1) +
+                    ". Hãy kéo thẻ để sắp xếp lại nhé!"
+
+                );
+
+
+                return;
+
+            }
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       ĐÚNG HOÀN TOÀN
+    ====================================================== */
+
+    showResult(
+
+        true,
+
+        "CHÍNH XÁC! 🎉",
+
+        "Nhóm đã lắp ghép đúng chương trình. Với n = 10, các số tự nhiên chẵn nhỏ hơn 10 là 0, 2, 4, 6, 8 và tổng bằng 20."
+
+    );
+
+
+    launchConfetti();
+
+}
+
+
+
+/* =========================================================
+   ĐÁNH DẤU DÒNG SAI
+========================================================= */
+
+function highlightWrongLine(
+    index
+) {
+
+    const trays =
+        document.querySelectorAll(
+            ".tray"
+        );
+
+
+    if (
+        !trays[index]
+    ) {
+
+        return;
+
+    }
+
+
+    trays[index]
+        .style
+        .borderColor =
+        "#e75b5b";
+
+
+    trays[index]
+        .style
+        .background =
+        "#fff0f0";
+
+
+    trays[index]
+        .scrollIntoView({
+
+            behavior:
+                "smooth",
+
+            block:
+                "nearest"
+
+        });
+
+}
+
+
+
+/* =========================================================
+   XÓA ĐÁNH DẤU SAI
+========================================================= */
+
+function clearWrongHighlights() {
+
+    document
+        .querySelectorAll(
+            ".tray"
+        )
+        .forEach(
+            function (tray) {
+
+                tray.style.borderColor =
+                    "";
+
+                tray.style.background =
+                    "";
+
+            }
+        );
+
+}
+
+
+
+/* =========================================================
+   HIỂN THỊ MODAL
+========================================================= */
+
+function showResult(
+    success,
+    title,
+    text
+) {
+
+    const modal =
+        document.getElementById(
+            "modal"
+        );
+
+
+    const box =
+        document.getElementById(
+            "modalBox"
+        );
+
+
+    document
+        .getElementById(
+            "modalIcon"
+        )
+        .textContent =
+        success
+        ? "🏆"
+        : "🤔";
+
+
+    document
+        .getElementById(
+            "modalTitle"
+        )
+        .textContent =
+        title;
+
+
+    document
+        .getElementById(
+            "modalText"
+        )
+        .textContent =
+        text;
+
+
+    box.style.borderColor =
+        success
+        ? "#55bf8a"
+        : "#efa35b";
+
+
+    modal
+        .classList
+        .add(
+            "show"
+        );
+
+}
+
+
+
+/* =========================================================
+   ĐÓNG MODAL
+========================================================= */
+
+function closeModal() {
+
+    document
+        .getElementById(
+            "modal"
+        )
+        .classList
+        .remove(
+            "show"
+        );
+
+}
+
+
+
+/* =========================================================
+   CLICK RA NGOÀI MODAL
+========================================================= */
+
+document
+    .getElementById(
+        "modal"
+    )
+    .addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                event.target ===
+                this
+            ) {
+
+                closeModal();
+
+            }
+
+        }
+    );
+
+
+
+/* =========================================================
+   ESC
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key ===
+            "Escape"
+        ) {
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   HIỆU ỨNG PHÁO GIẤY
+========================================================= */
+
+function launchConfetti() {
+
+    const colors = [
+
+        "#ffbe0b",
+        "#3a86ff",
+        "#8338ec",
+        "#fb5607",
+        "#06d6a0",
+        "#ef476f"
+
+    ];
+
+
+    for (
+        let i = 0;
+        i < 100;
+        i++
+    ) {
+
+        const item =
+            document.createElement(
+                "div"
+            );
+
+
+        item.className =
+            "confetti";
+
+
+        item.style.left =
+            Math.random() *
+            100 +
+            "vw";
+
+
+        item.style.background =
+            colors[
+                Math.floor(
+                    Math.random() *
+                    colors.length
+                )
+            ];
+
+
+        item.style.animationDuration =
+            (
+                2.2 +
+                Math.random() *
+                2.2
+            ) +
+            "s";
+
+
+        item.style.animationDelay =
+            (
+                Math.random() *
+                .45
+            ) +
+            "s";
+
+
+        document.body
+            .appendChild(
+                item
+            );
+
+
+        setTimeout(
+            function () {
+
+                item.remove();
+
+            },
+            5000
+        );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   XÓA HIỆU ỨNG KÉO
+========================================================= */
+
+function clearDragEffects() {
+
+    document
+        .querySelectorAll(
+            ".tray"
+        )
+        .forEach(
+            function (tray) {
+
+                tray
+                    .classList
+                    .remove(
+                        "drag-over"
+                    );
+
+            }
+        );
+
+
+    document
+        .querySelectorAll(
+            ".dragging"
+        )
+        .forEach(
+            function (card) {
+
+                card
+                    .classList
+                    .remove(
+                        "dragging"
+                    );
+
+            }
+        );
+
+
+    clearInsertionMarker();
+
+}
+
+
+
+/* =========================================================
+   TOÀN MÀN HÌNH
+========================================================= */
+
+function toggleFullscreen() {
+
+    if (
+        !document.fullscreenElement
+    ) {
+
+        document
+            .documentElement
+            .requestFullscreen()
+            .catch(
+                function () {
+
+                    /* Browser không hỗ trợ thì bỏ qua */
+
+                }
+            );
+
+    }
+
+    else {
+
+        document
+            .exitFullscreen();
+
+    }
+
+}
+
+</script>
 
 </body>
 </html>
